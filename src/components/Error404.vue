@@ -1,13 +1,17 @@
 <template>
-  <h1>This is creating</h1>
+  <h1>Error 404 hahahha</h1>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 
 export default Vue.extend({
-  name: 'event-create'
+  name: 'error404'
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+h1 {
+  color: red;
+}
+</style>

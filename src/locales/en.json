@@ -1,0 +1,8 @@
+{
+  "message": "hello i18n !!",
+  "nav": {
+    "list": "List",
+    "show": "Show",
+    "create": "Create"
+  }
+}

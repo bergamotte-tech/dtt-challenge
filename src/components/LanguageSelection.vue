@@ -1,9 +1,8 @@
 <template>
   <div>
-    <h2>{{ localised('hello') }}</h2>
-    <h2>{{ localised('goodbye ') }}</h2>
-    <button @click="activeLocale = 'en'">English</button>
-    <button @click="activeLocale = 'fr'">French</button>
+    <h2>{{ $t('message') }}</h2>
+    <button @click="setLocale('en')">English</button>
+    <button @click="setLocale('fr')">French</button>
   </div>
 </template>
 
@@ -14,22 +13,15 @@ export default Vue.extend({
   name: 'language-selection',
   data() {
     return {
-      activeLocale: 'en',
-      translations: {
-        en: {
-          hello: 'Hello',
-          goodbye: 'Goodbye'
-        },
-        fr: {
-          hello: 'Bonjour',
-          goodbye: 'Au revoir'
-        }
-      }
+      activeLocale: 'en'
     }
   },
   methods: {
-    localised(key: string): string {
-      return this.translations[this.activeLocale][key]
+    setLocale(locale: string): void {
+      ;(this.$i18n.locale = locale),
+        this.$router.push({
+          params: { lang: locale }
+        })
     }
   }
 })

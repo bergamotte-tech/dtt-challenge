@@ -1,0 +1,8 @@
+{
+  "message": "bonjour i18n !!",
+  "nav": {
+    "list": "Liste",
+    "show": "Visualiser",
+    "create": "Créer"
+  }
+}

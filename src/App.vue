@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link :to="{ name: 'event-list' }">List</router-link> |
-      <router-link :to="{ name: 'event-show' }">Show Event #1</router-link> |
-      <router-link :to="{ name: 'event-create' }">Create</router-link>
+      <router-link :to="{ name: 'event-list' }">{{ $t('nav.list') }}</router-link>|
+      <router-link :to="{ name: 'event-show' }">{{ $t('nav.show') }}</router-link>|
+      <router-link :to="{ name: 'event-create' }">{{ $t('nav.create') }}</router-link>
     </div>
     <router-view />
   </div>
