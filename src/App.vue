@@ -1,13 +1,31 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link :to="{ name: 'event-list' }">{{ $t('nav.list') }}</router-link>|
-      <router-link :to="{ name: 'event-show' }">{{ $t('nav.show') }}</router-link>|
-      <router-link :to="{ name: 'event-create' }">{{ $t('nav.create') }}</router-link>
+      <router-link :to="'/' + locale"> {{ $t('nav.list') }} </router-link>|
+      <router-link :to="'/' + locale + '/event'">
+        {{ $t('nav.show') }} </router-link
+      >|
+      <router-link :to="'/' + locale + '/event/create'">
+        {{ $t('nav.create') }}
+      </router-link>
     </div>
     <router-view />
   </div>
 </template>
+
+<script lang="ts">
+import Vue from 'vue'
+import i18n from './i18n'
+
+export default Vue.extend({
+  name: 'app',
+  data() {
+    return {
+      locale: i18n.locale
+    }
+  }
+})
+</script>
 
 <style>
 #app {

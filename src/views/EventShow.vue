@@ -1,5 +1,5 @@
 <template>
-  <h1>This is showing</h1>
+  <h1>{{ $t('views.event-show.title') }}</h1>
 </template>
 
 <script lang="ts">

@@ -1,12 +1,12 @@
 <template>
-  <h1>Error 404 hahahha</h1>
+  <h1>{{ $t('errors.error-404.title') }}</h1>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 
 export default Vue.extend({
-  name: 'error404'
+  name: 'error-404'
 })
 </script>
 

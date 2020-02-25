@@ -1,8 +1,33 @@
 {
   "message": "hello i18n !!",
+
   "nav": {
     "list": "List",
     "show": "Show",
     "create": "Create"
+  },
+
+  "views": {
+    "event-list": {
+      "title": "This is list"
+    },
+
+    "event-show": {
+      "title": "This is show"
+    },
+
+    "event-create": {
+      "title": "This is create"
+    }
+  },
+
+  "errors": {
+    "error-404": {
+      "title": "Error 404, we are sorry"
+    },
+
+    "error-undefined-language": {
+      "title": "The specified language does not exist"
+    }
   }
 }

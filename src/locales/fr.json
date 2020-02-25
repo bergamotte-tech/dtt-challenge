@@ -1,8 +1,33 @@
 {
   "message": "bonjour i18n !!",
+
   "nav": {
     "list": "Liste",
     "show": "Visualiser",
     "create": "Créer"
+  },
+
+  "views": {
+    "event-list": {
+      "title": "Ceci est liste"
+    },
+
+    "event-show": {
+      "title": "Ceci est visualiser"
+    },
+
+    "event-create": {
+      "title": "Ceci est créer"
+    }
+  },
+
+  "errors": {
+    "error-404": {
+      "title": "Erreur 404, nous sommes navrés"
+    },
+
+    "error-undefined-language": {
+      "title": "Le language spécifé est inexistant"
+    }
   }
 }

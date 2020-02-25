@@ -11,17 +11,15 @@ import Vue from 'vue'
 
 export default Vue.extend({
   name: 'language-selection',
-  data() {
-    return {
-      activeLocale: 'en'
-    }
-  },
   methods: {
     setLocale(locale: string): void {
-      ;(this.$i18n.locale = locale),
-        this.$router.push({
+      this.$root.$i18n.locale = locale
+      this.$root.$i18n.fallbackLocale = locale
+      this.$router
+        .push({
           params: { lang: locale }
         })
+        .catch(err => err)
     }
   }
 })
