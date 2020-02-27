@@ -7,6 +7,13 @@
     "create": "Créer"
   },
 
+  "path": {
+    "list": "",
+    "show": "evenement",
+    "create": "evenement/creer",
+    "error-404": "erreur/page-introuvable"
+  },
+
   "views": {
     "event-list": {
       "title": "Ceci est liste"
@@ -26,7 +33,7 @@
       "title": "Erreur 404, nous sommes navrés"
     },
 
-    "error-undefined-language": {
+    "error-language": {
       "title": "Le language spécifé est inexistant"
     }
   }

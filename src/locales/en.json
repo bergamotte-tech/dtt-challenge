@@ -7,6 +7,13 @@
     "create": "Create"
   },
 
+  "path": {
+    "list": "",
+    "show": "event",
+    "create": "event/create",
+    "error-404": "error/not-found"
+  },
+
   "views": {
     "event-list": {
       "title": "This is list"
@@ -26,7 +33,7 @@
       "title": "Error 404, we are sorry"
     },
 
-    "error-undefined-language": {
+    "error-language": {
       "title": "The specified language does not exist"
     }
   }

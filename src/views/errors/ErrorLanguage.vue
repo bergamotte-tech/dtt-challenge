@@ -1,12 +1,12 @@
 <template>
-  <h1>{{ $t('errors.error-undefined-language.title') }}</h1>
+  <h1>{{ $t('errors.error-language.title') }}</h1>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 
 export default Vue.extend({
-  name: 'error-undefined-language'
+  name: 'error-language'
 })
 </script>
 

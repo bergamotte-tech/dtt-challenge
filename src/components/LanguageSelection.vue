@@ -13,12 +13,17 @@ export default Vue.extend({
   name: 'language-selection',
   methods: {
     setLocale(locale: string): void {
+      const genericRouteName: string = this.$route.meta
+
       this.$root.$i18n.locale = locale
       this.$root.$i18n.fallbackLocale = locale
+
       this.$router
-        .push({
-          params: { lang: locale }
-        })
+        .push(
+          '/' +
+            locale +
+            `/${this.$root.$i18n.t('path.' + genericRouteName, locale)}`
+        )
         .catch(err => err)
     }
   }

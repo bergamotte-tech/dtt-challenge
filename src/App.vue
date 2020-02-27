@@ -2,10 +2,10 @@
   <div id="app">
     <div id="nav">
       <router-link :to="'/' + locale"> {{ $t('nav.list') }} </router-link>|
-      <router-link :to="'/' + locale + '/event'">
+      <router-link :to="'/' + locale + '/' + $t('path.show')">
         {{ $t('nav.show') }} </router-link
       >|
-      <router-link :to="'/' + locale + '/event/create'">
+      <router-link :to="'/' + locale + '/' + $t('path.create')">
         {{ $t('nav.create') }}
       </router-link>
     </div>
@@ -23,6 +23,9 @@ export default Vue.extend({
     return {
       locale: i18n.locale
     }
+  },
+  updated() {
+    this.locale = i18n.locale
   }
 })
 </script>
