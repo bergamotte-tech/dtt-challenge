@@ -4,13 +4,15 @@
   "nav": {
     "list": "Liste",
     "show": "Visualiser",
-    "create": "Créer"
+    "create": "Créer",
+    "user": "Utilisateur"
   },
 
   "path": {
     "list": "",
     "show": "evenement",
     "create": "evenement/creer",
+    "user": "utilisateur",
     "error-404": "erreur/page-introuvable"
   },
 
@@ -25,6 +27,10 @@
 
     "event-create": {
       "title": "Ceci est créer"
+    },
+
+    "user": {
+      "title": "Ceci est utilisateur"
     }
   },
 

@@ -12,9 +12,11 @@ const routes: Array<RouteConfig> = [
 ]
 
 // fill routes with available locales
+// NOTES : declare dynamic segments here, not in json as it will be considered a String
+// NOTES : nested paths that start with / will be treated as a root path. This allows you to leverage the component nesting without having to use a nested URL.
+
 const locales = i18n.availableLocales
 for (let i = 0; i < locales.length; i++) {
-  console.log('Je tente de push ' + locales[i])
   routes.push({
     path: '/' + locales[i],
     component: {
@@ -25,26 +27,37 @@ for (let i = 0; i < locales.length; i++) {
     },
     children: [
       {
-        path: '',
-        meta: 'list',
+        path: '/' + locales[i],
+        name: locales[i] + '-event-list',
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
         component: () => import('@/views/EventList.vue')
       },
       {
-        path: `${i18n.t('path.show', locales[i])}`,
-        meta: 'show',
-        component: () => import('@/views/EventShow.vue')
-      },
-      {
-        path: `${i18n.t('path.create', locales[i])}`,
-        meta: 'create',
+        path: '/' + locales[i] + `/${i18n.t('path.create', locales[i])}`,
+        name: locales[i] + '-event-create',
         component: () => import('@/views/EventCreate.vue')
       },
       {
-        path: '*',
-        meta: 'error-404',
+        path: '/' + locales[i] + `/${i18n.t('path.show', locales[i])}` + '/:id',
+        name: locales[i] + '-event-show',
+        component: () => import('@/views/EventShow.vue'),
+        props: true
+      },
+      {
+        path:
+          '/' +
+          locales[i] +
+          `/${i18n.t('path.user', locales[i])}` +
+          '/:username',
+        name: locales[i] + '-user',
+        component: () => import('@/views/User.vue'),
+        props: true
+      },
+      {
+        path: '/' + locales[i] + '/*',
+        name: locales[i] + '-error-404',
         component: () => import('@/views/errors/Error404.vue')
       }
     ]

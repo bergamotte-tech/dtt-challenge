@@ -1,13 +1,15 @@
 <template>
-  <h1>{{ $t('views.event-show.title') }} n°{{ id }}</h1>
+  <div>
+    <h1>{{ $t('views.user.title') }} {{ username }}</h1>
+  </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 
 export default Vue.extend({
-  name: 'event-show',
-  props: ['id']
+  name: 'user',
+  props: ['username']
 })
 </script>
 

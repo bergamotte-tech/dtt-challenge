@@ -1,13 +1,31 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link :to="'/' + locale"> {{ $t('nav.list') }} </router-link>|
-      <router-link :to="'/' + locale + '/' + $t('path.show')">
-        {{ $t('nav.show') }} </router-link
-      >|
-      <router-link :to="'/' + locale + '/' + $t('path.create')">
+      <router-link
+        :to="{
+          name: locale + '-event-list'
+        }"
+      >
+        {{ $t('nav.list') }}
+      </router-link>
+      |
+      <router-link
+        :to="{
+          name: locale + '-event-create'
+        }"
+      >
         {{ $t('nav.create') }}
       </router-link>
+      |
+      <router-link
+        :to="{
+          name: locale + '-user',
+          params: { username: 'gregg' }
+        }"
+      >
+        {{ $t('nav.user') }}
+      </router-link>
+      <language-selection></language-selection>
     </div>
     <router-view />
   </div>
@@ -15,10 +33,14 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import i18n from './i18n'
+import i18n from '@/i18n'
+import LanguageSelection from '@/components/LanguageSelection.vue'
 
 export default Vue.extend({
   name: 'app',
+  components: {
+    LanguageSelection
+  },
   data() {
     return {
       locale: i18n.locale

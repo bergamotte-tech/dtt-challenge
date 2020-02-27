@@ -4,13 +4,15 @@
   "nav": {
     "list": "List",
     "show": "Show",
-    "create": "Create"
+    "create": "Create",
+    "user": "User"
   },
 
   "path": {
     "list": "",
     "show": "event",
     "create": "event/create",
+    "user": "user",
     "error-404": "error/not-found"
   },
 
@@ -25,6 +27,10 @@
 
     "event-create": {
       "title": "This is create"
+    },
+
+    "user": {
+      "title": "This is user"
     }
   },
 

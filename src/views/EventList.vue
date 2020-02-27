@@ -1,18 +1,32 @@
 <template>
   <div>
     <h1>{{ $t('views.event-list.title') }}</h1>
-    <language-selection></language-selection>
+    <p>
+      <router-link
+        :to="{
+          name: locale + '-event-show',
+          params: { id: '1' }
+        }"
+      >
+        {{ $t('nav.show') }}
+      </router-link>
+    </p>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import LanguageSelection from '@/components/LanguageSelection.vue'
+import i18n from '@/i18n'
 
 export default Vue.extend({
   name: 'event-list',
-  components: {
-    LanguageSelection
+  data() {
+    return {
+      locale: i18n.locale
+    }
+  },
+  updated() {
+    this.locale = i18n.locale
   }
 })
 </script>

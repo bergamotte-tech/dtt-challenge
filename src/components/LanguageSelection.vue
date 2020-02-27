@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2>{{ $t('message') }}</h2>
     <button @click="setLocale('en')">English</button>
     <button @click="setLocale('fr')">French</button>
   </div>
@@ -13,17 +12,16 @@ export default Vue.extend({
   name: 'language-selection',
   methods: {
     setLocale(locale: string): void {
-      const genericRouteName: string = this.$route.meta
-
       this.$root.$i18n.locale = locale
       this.$root.$i18n.fallbackLocale = locale
 
+      const routeName: string = this.$route.name ? this.$route.name : ''
+
       this.$router
-        .push(
-          '/' +
-            locale +
-            `/${this.$root.$i18n.t('path.' + genericRouteName, locale)}`
-        )
+        .push({
+          name: locale + routeName.substring(2),
+          params: this.$route.params
+        })
         .catch(err => err)
     }
   }
