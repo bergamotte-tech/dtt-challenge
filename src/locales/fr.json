@@ -1,6 +1,12 @@
 {
   "message": "bonjour i18n !!",
 
+  "components": {
+    "event-card": {
+      "title": "Park Cleanup"
+    }
+  },
+
   "nav": {
     "list": "Liste",
     "show": "Visualiser",

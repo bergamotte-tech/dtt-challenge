@@ -73,4 +73,35 @@ const router = new VueRouter({
   mode: 'history'
 })
 
+router.beforeEach((to, from, next) => {
+  if (from.fullPath.substring(1, 3) == to.fullPath.substring(1, 3)) {
+    next()
+  } else if (from.name == to.name) {
+    next()
+  } else {
+    // get the language from the url
+    const chosenLanguage: string = to.fullPath.substring(1, 3).substring(0, 2)
+
+    // get the existing locales
+    const locales = i18n.availableLocales
+    // check if language corresponds to one of the existing locales
+    let isValidLanguage = false
+    for (let i = 0; i < locales.length; i++) {
+      if (locales[i] === chosenLanguage) {
+        isValidLanguage = true
+        i = locales.length
+      }
+    }
+
+    if (!isValidLanguage) {
+      console.log('aa')
+      next()
+    } else {
+      i18n.locale = chosenLanguage
+      i18n.fallbackLocale = chosenLanguage
+      next()
+    }
+  }
+})
+
 export default router

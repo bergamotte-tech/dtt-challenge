@@ -1,16 +1,14 @@
 <template>
   <div>
     <h1>{{ $t('views.event-list.title') }}</h1>
-    <p>
-      <router-link
-        :to="{
-          name: locale + '-event-show',
-          params: { id: '1' }
-        }"
-      >
-        {{ $t('nav.show') }}
-      </router-link>
-    </p>
+    <router-link
+      :to="{
+        name: locale + '-event-show',
+        params: { id: '1' }
+      }"
+    >
+      {{ $t('nav.show') }}
+    </router-link>
   </div>
 </template>
 

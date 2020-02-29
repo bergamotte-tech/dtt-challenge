@@ -3,11 +3,9 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-
-export default Vue.extend({
+export default {
   name: 'error-language'
-})
+}
 </script>
 
 <style scoped>

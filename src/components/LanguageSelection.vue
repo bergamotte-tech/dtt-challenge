@@ -15,7 +15,8 @@ export default Vue.extend({
       this.$root.$i18n.locale = locale
       this.$root.$i18n.fallbackLocale = locale
 
-      const routeName: string = this.$route.name ? this.$route.name : ''
+      const routeName: string =
+        this.$route.name != undefined ? this.$route.name : 'en-event-list'
 
       this.$router
         .push({

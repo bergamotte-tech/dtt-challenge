@@ -1,14 +1,20 @@
 <template>
-  <h1>{{ $t('views.event-show.title') }} n°{{ id }}</h1>
+  <div>
+    <h1>{{ $t('views.event-show.title') }}</h1>
+    <event-card />
+  </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import EventCard from '@/components/EventCard.vue'
 
-export default Vue.extend({
+export default {
   name: 'event-show',
-  props: ['id']
-})
+  props: ['id'],
+  components: {
+    EventCard
+  }
+}
 </script>
 
 <style scoped></style>
