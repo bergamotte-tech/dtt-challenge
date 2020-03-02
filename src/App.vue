@@ -1,65 +1,126 @@
 <template>
   <div id="app">
-    <NavBar />
+    <age-verification />
+    <navbar />
     <router-view />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import NavBar from '@/components/NavBar.vue'
+import Navbar from '@/components/navtop/Navbar.vue'
+import AgeVerification from '@/components/others/AgeVerification.vue'
 
 export default Vue.extend({
   name: 'app',
   components: {
-    NavBar
+    Navbar,
+    AgeVerification
+  },
+  mounted() {
+    if (!localStorage.getItem('isLegalAge'))
+      localStorage.setItem('isLegalAge', 'false')
   }
 })
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Patrick+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+
+:root {
+  font-size: 16px;
+  --beer-blue: #04d9d9;
+  --beer-green: #02734a;
+  --beer-yellow: #f2d338;
+  --beer-orange: #f25c05;
+  --beer-red: #f23838;
+
+  --text-primary: #ffffff;
+  --text-secondary: #ff671b;
+  --bgrd-primary: #191919;
+  --bgrd-secondary: #f9f9f9;
+}
+
+::selection,
+::-moz-selection,
+::-webkit-selection {
+  color: var(--text-secondary);
+  background-color: var(--bgrd-primary);
+}
+
+::-webkit-scrollbar {
+  width: 0.25rem;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--text-secondary);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bgrd-secondary);
+}
+
+html {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  scrollbar-face-color: var(--text-secondary);
+  scrollbar-track-color: var(--bgrd-secondary);
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  font-family: 'Patrick Hand', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+
+  background-color: var(--bgrd-primary);
+  color: var(--text-primary);
 }
 
-#nav {
-  padding: 30px;
+.flex {
+  display: flex;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.flex-center {
+  justify-content: center;
+  align-items: center;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
 }
 
 body {
   margin: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
 }
-#app {
-  box-sizing: border-box;
-  width: 500px;
-  padding: 0 20px 20px;
-  margin: 0 auto;
-}
+
 hr {
   box-sizing: content-box;
   height: 0;
-  overflow: visible;
 }
+
 a {
-  color: #39b982;
+  color: var(--text-secondary);
   font-weight: 600;
   background-color: transparent;
+  text-decoration: none;
 }
 img {
   border-style: none;
@@ -73,7 +134,7 @@ h5,
 h6 {
   display: flex;
   align-items: center;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Patrick Hand', cursive;
 }
 h1 {
   font-size: 50px;
@@ -106,39 +167,11 @@ strong {
 small {
   font-size: 80%;
 }
-.eyebrow {
-  font-size: 20px;
-}
-.-text-primary {
-  color: #39b982;
-}
-.-text-base {
-  color: #000;
-}
 .-text-error {
   color: tomato;
 }
-.-text-gray {
-  color: rgba(0, 0, 0, 0.5);
-}
 .-shadow {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.13);
-}
-.badge {
-  display: inline-flex;
-  height: 26px;
-  width: auto;
-  padding: 0 7px;
-  margin: 0 5px;
-  background: transparent;
-  border-radius: 13px;
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 26px;
-}
-.badge.-fill-gradient {
-  background: linear-gradient(to right, #16c0b0, #84cf6a);
-  color: #fff;
 }
 button,
 label,
@@ -147,7 +180,7 @@ optgroup,
 select,
 textarea {
   display: inline-flex;
-  font-family: 'Open sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 100%;
   line-height: 1.15;
   margin: 0;
@@ -177,7 +210,7 @@ button:-moz-focusring,
 [type='button']:-moz-focusring,
 [type='reset']:-moz-focusring,
 [type='submit']:-moz-focusring {
-  outline: 2px solid #39b982;
+  outline: 2px solid var(--text-secondary);
 }
 label {
   color: rgba(0, 0, 0, 0.5);
@@ -230,31 +263,5 @@ textarea {
 }
 [hidden] {
   display: none;
-}
-select {
-  width: 100%;
-  height: 52px;
-  padding: 0 24px 0 10px;
-  vertical-align: middle;
-  background: #fff
-    url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E")
-    no-repeat right 12px center;
-  background-size: 8px 10px;
-  border: solid 1px rgba(0, 0, 0, 0.4);
-  border-radius: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-select:focus {
-  border-color: #39b982;
-  outline: 0;
-}
-select:focus::ms-value {
-  color: #000;
-  background: #fff;
-}
-select::ms-expand {
-  opacity: 0;
 }
 </style>

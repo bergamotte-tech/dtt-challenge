@@ -1,52 +1,72 @@
 {
-  "message": "hello i18n !!",
-
   "components": {
-    "event-card": {
-      "title": "Park Cleanup"
+    "navtop": {
+      "navbar": {
+        "title-home": "Home",
+        "title-categories": "Categories",
+        "title-random": "Random",
+        "title-menu": "Menu",
+        "title-hide": "Hide"
+      }
+    },
+    "navbottom": {
+      "email": {
+        "title": "Title email"
+      },
+      "footer": {
+        "title": "Title footer"
+      }
     }
   },
 
-  "nav": {
-    "list": "List",
-    "show": "Show",
-    "create": "Create",
-    "user": "User"
-  },
-
-  "path": {
-    "list": "",
-    "show": "event",
-    "create": "event/create",
-    "user": "user",
-    "error-404": "error/not-found"
+  "router": {
+    "path-home": "",
+    "path-categories": "categories",
+    "path-random": "random",
+    "path-details": "details",
+    "path-age-verification": "age-verification"
   },
 
   "views": {
-    "event-list": {
-      "title": "This is list"
+    "errors": {
+      "error-404": {
+        "title": "Error 404, we are sorry"
+      },
+
+      "error-language": {
+        "title": "The specified language does not exist"
+      }
     },
 
-    "event-show": {
-      "title": "This is show"
+    "age-verification": {
+      "title": "Are you of legal drinking age ?"
     },
 
-    "event-create": {
-      "title": "This is create"
+    "categories": {
+      "title": "Title categories"
     },
 
-    "user": {
-      "title": "This is user"
+    "details": {
+      "title": "Title details"
+    },
+
+    "home": {
+      "title": "Title home"
+    },
+
+    "random": {
+      "title": "Title random"
     }
   },
 
-  "errors": {
-    "error-404": {
-      "title": "Error 404, we are sorry"
-    },
+  "alt": {
+    "image-beer": "Image of a beer can",
+    "image-juice": "Image of a juice can"
+  },
 
-    "error-language": {
-      "title": "The specified language does not exist"
-    }
+  "buttons": {
+    "yes": "Yes",
+    "no": "No",
+    "submit": "Submit"
   }
 }

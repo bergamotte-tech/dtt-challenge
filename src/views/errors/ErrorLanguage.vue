@@ -1,5 +1,5 @@
 <template>
-  <h1>{{ $t('errors.error-language.title') }}</h1>
+  <h1>{{ $t('views.errors.error-language.title') }}</h1>
 </template>
 
 <script lang="ts">

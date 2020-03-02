@@ -1,12 +1,10 @@
 <template>
-  <div>
-    <h1>{{ $t('views.event-create.title') }}</h1>
-  </div>
+  <h1>{{ $t('views.random.title') }}</h1>
 </template>
 
 <script lang="ts">
 export default {
-  name: 'event-create'
+  name: 'random'
 }
 </script>
 

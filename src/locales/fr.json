@@ -1,52 +1,72 @@
 {
-  "message": "bonjour i18n !!",
-
   "components": {
-    "event-card": {
-      "title": "Park Cleanup"
+    "navtop": {
+      "navbar": {
+        "title-home": "Maison",
+        "title-categories": "Catégories",
+        "title-random": "Aléatoire",
+        "title-menu": "Menu",
+        "title-hide": "Cacher"
+      }
+    },
+    "navbottom": {
+      "email": {
+        "title": "Titre email"
+      },
+      "footer": {
+        "title": "Title footer"
+      }
     }
   },
 
-  "nav": {
-    "list": "Liste",
-    "show": "Visualiser",
-    "create": "Créer",
-    "user": "Utilisateur"
-  },
-
-  "path": {
-    "list": "",
-    "show": "evenement",
-    "create": "evenement/creer",
-    "user": "utilisateur",
-    "error-404": "erreur/page-introuvable"
+  "router": {
+    "path-home": "",
+    "path-categories": "categories",
+    "path-random": "random",
+    "path-details": "details",
+    "path-age-verification": "age-verification"
   },
 
   "views": {
-    "event-list": {
-      "title": "Ceci est liste"
+    "errors": {
+      "error-404": {
+        "title": "Error 404, we are sorry"
+      },
+
+      "error-language": {
+        "title": "The specified language does not exist"
+      }
     },
 
-    "event-show": {
-      "title": "Ceci est visualiser"
+    "age-verification": {
+      "title": "Êtes-vous en âge de consommer de l'alcool ?"
     },
 
-    "event-create": {
-      "title": "Ceci est créer"
+    "categories": {
+      "title": "Titre categories"
     },
 
-    "user": {
-      "title": "Ceci est utilisateur"
+    "details": {
+      "title": "Titre details"
+    },
+
+    "home": {
+      "title": "Titre home"
+    },
+
+    "random": {
+      "title": "Titre random"
     }
   },
 
-  "errors": {
-    "error-404": {
-      "title": "Erreur 404, nous sommes navrés"
-    },
+  "alt": {
+    "image-beer": "Image d'une canette de bière",
+    "image-juice": "Image d'une canette de jus"
+  },
 
-    "error-language": {
-      "title": "Le language spécifé est inexistant"
-    }
+  "buttons": {
+    "yes": "Oui",
+    "no": "Non",
+    "submit": "Valider"
   }
 }
