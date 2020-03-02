@@ -1,20 +1,72 @@
 <template>
   <div>
-    <h1>{{ $t('views.event-show.title') }}</h1>
-    <event-card />
+    <div class="event-header">
+      <span class="eyebrow">@{{ event.time }} on {{ event.date }}</span>
+      <h1 class="title">{{ event.title }}</h1>
+      <h5>Organized by {{ event.organizer }}</h5>
+      <h5>Category: {{ event.category }}</h5>
+    </div>
+    <p>Location: {{ event.location }}</p>
+    <h2>Event details</h2>
+    <p>{{ event.description }}</p>
+    <h2>
+      Attendees
+      <span class="badge -fill-gradient">{{
+        event.attendees ? event.attendees.length : 0
+      }}</span>
+    </h2>
+    <ul class="list-group">
+      <li
+        v-for="(attendee, index) in event.attendees"
+        :key="index"
+        class="list-item"
+      >
+        <b>{{ attendee.name }}</b>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script lang="ts">
-import EventCard from '@/components/EventCard.vue'
+import EventService from '@/data/EventService.ts'
 
 export default {
   name: 'event-show',
   props: ['id'],
-  components: {
-    EventCard
+  data() {
+    return {
+      event: {}
+    }
+  },
+  created() {
+    EventService.getEvent(this.id) // <--- Send the prop id to our EventService
+      .then(response => {
+        this.event = response.data
+      })
+      .catch(error => {
+        console.log('There was an error:', error.response)
+      })
   }
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.location {
+  margin-bottom: 0;
+}
+.location > .icon {
+  margin-left: 10px;
+}
+.event-header > .title {
+  margin: 0;
+}
+.list-group {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.list-group > .list-item {
+  padding: 1em 0;
+  border-bottom: solid 1px #e5e5e5;
+}
+</style>

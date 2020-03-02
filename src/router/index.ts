@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import i18n from '@/i18n'
+import { VNode } from 'vue/types/umd'
 
 Vue.use(VueRouter)
 
@@ -20,9 +21,8 @@ for (let i = 0; i < locales.length; i++) {
   routes.push({
     path: '/' + locales[i],
     component: {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      render(c: (arg0: string) => any) {
-        return c('router-view')
+      render(createElement): VNode {
+        return createElement('router-view')
       }
     },
     children: [

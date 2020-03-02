@@ -29,10 +29,11 @@
 </template>
 
 <script lang="ts">
+import Vue from 'vue'
 import i18n from '@/i18n'
 import LanguageSelection from '@/components/LanguageSelection.vue'
 
-export default {
+export default Vue.extend({
   name: 'navbar',
   components: {
     LanguageSelection
@@ -45,7 +46,7 @@ export default {
   updated() {
     this.locale = i18n.locale
   }
-}
+})
 </script>
 
 <style scoped>
