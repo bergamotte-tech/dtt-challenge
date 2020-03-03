@@ -43,19 +43,21 @@
     },
 
     "categories": {
-      "title": "Title categories"
+      "title": "Categories"
     },
 
     "details": {
-      "title": "Title details"
+      "title": "Details"
     },
 
     "home": {
-      "title": "Title home"
+      "title": "Home",
+      "on-tap": "Beers on tap",
+      "thirsty": "Still thirsty ?"
     },
 
     "random": {
-      "title": "Title random"
+      "title": "Random"
     }
   },
 

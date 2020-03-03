@@ -1,21 +1,13 @@
 <template>
   <div class="language-selection">
-    <v-menu offset-y>
-      <template v-slot:activator="{ on }">
-        <v-btn color="primary" dark v-on="on">
-          Dropdown
-        </v-btn>
-      </template>
-      <v-list>
-        <v-list-item
-          v-for="(language, index) in languages"
-          :key="index"
-          @click="setLocale(language)"
-        >
-          <v-list-item-title>{{ item.title }}</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-menu>
+    <select class="">
+      <option
+        v-for="(lang, index) in languages"
+        :key="index"
+        @click="setLocale(lang)"
+        >{{ lang }}</option
+      >
+    </select>
   </div>
 </template>
 
@@ -26,12 +18,7 @@ export default Vue.extend({
   name: 'language-selection',
   data() {
     return {
-      items: [
-        { title: 'Click Me' },
-        { title: 'Click Me' },
-        { title: 'Click Me' },
-        { title: 'Click Me 2' }
-      ]
+      languages: this.$root.$i18n.availableLocales
     }
   },
   methods: {

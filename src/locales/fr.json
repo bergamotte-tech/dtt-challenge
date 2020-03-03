@@ -51,7 +51,9 @@
     },
 
     "home": {
-      "title": "Titre home"
+      "title": "Accueil",
+      "on-tap": "Bières du moment",
+      "thirsty": "Encore soif ?"
     },
 
     "random": {

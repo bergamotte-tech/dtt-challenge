@@ -72,11 +72,15 @@ export default Vue.extend({
 
 <style scoped>
 #nav {
-  padding: 30px;
+  position: fixed;
+  z-index: 800;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  height: 60px;
+  height: 5rem;
+  width: 100%;
+
+  background-color: var(--bgrd-primary);
 }
 
 #nav a {

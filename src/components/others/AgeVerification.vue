@@ -1,7 +1,6 @@
 <template>
   <div id="age-verification" class="age-verification">
     <div class="menu">
-      <!-- TODO improve logo + language selector -->
       <language-selection></language-selection>
     </div>
     <div class="flex flex-column flex-center">
@@ -48,7 +47,7 @@ export default Vue.extend({
       const target = document.getElementById('age-verification')
       if (target != null) {
         if (isUnderage) target.style.display = 'block'
-        else target.style.display = 'block' // 'none'
+        else target.style.display = 'none'
       }
     }
   },
@@ -63,7 +62,8 @@ export default Vue.extend({
 
 <style scoped>
 .age-verification {
-  position: absolute;
+  position: fixed;
+  z-index: 2000;
   width: 100%;
   height: 100%;
   background-color: blueviolet;

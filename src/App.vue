@@ -60,6 +60,11 @@ export default Vue.extend({
   background: var(--bgrd-secondary);
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 html {
   width: 100%;
   min-height: 100%;
@@ -103,6 +108,10 @@ body {
   flex-direction: row;
 }
 
+.padding-view {
+  padding: 5rem;
+}
+
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
@@ -133,33 +142,83 @@ h4,
 h5,
 h6 {
   display: flex;
+  justify-content: flex-start;
   align-items: center;
   font-family: 'Patrick Hand', cursive;
 }
-h1 {
-  font-size: 50px;
+
+/* TEXT SIZE */
+
+@media screen and (min-width: 0px) {
+  h1 {
+    font-size: 68px;
+  }
+  h2 {
+    font-size: 26px;
+  }
+  h3 {
+    font-size: 19px;
+  }
+  p {
+    font-size: 15px;
+  }
+}
+
+@media screen and (min-width: 300px) {
+  h1 {
+    font-size: 76px;
+  }
+  h2 {
+    font-size: 30px;
+  }
+  h3 {
+    font-size: 22px;
+  }
+  p {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  h1 {
+    font-size: 82px;
+  }
+  h2 {
+    font-size: 34px;
+  }
+  h3 {
+    font-size: 25px;
+  }
+  p {
+    font-size: 21px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  h1 {
+    font-size: 90px;
+  }
+  h2 {
+    font-size: 38px;
+  }
+  h3 {
+    font-size: 28px;
+  }
+  p {
+    font-size: 24px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   font-weight: 700;
 }
-h2 {
-  font-size: 38px;
-  font-weight: 700;
-}
-h3 {
-  font-size: 28px;
-  font-weight: 700;
-}
-h4 {
-  font-size: 21px;
-  font-weight: 700;
-}
-h5 {
-  font-size: 16px;
-  font-weight: 700;
-}
-h6 {
-  font-size: 15px;
-  font-weight: 700;
-}
+
 b,
 strong {
   font-weight: bolder;
@@ -255,7 +314,7 @@ textarea {
 [type='number']:focus,
 [type='search']:focus,
 [type='password']:focus {
-  border-color: #39b982;
+  border-color: var(--text-secondary);
 }
 ::-webkit-file-upload-button {
   -webkit-appearance: button;
