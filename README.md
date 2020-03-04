@@ -1,2 +1,2 @@
-# dtt-challenge-sample-project
-A sample project based on VueCLI features to train before starting the main project.
+# dtt-challenge
+A project given by DTT (Amsterdam) to develop and test my skills with VueJS and TypeScript.
