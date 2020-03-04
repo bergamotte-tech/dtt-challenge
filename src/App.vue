@@ -92,6 +92,10 @@ body {
   color: var(--text-primary);
 }
 
+.hidden {
+  display: none;
+}
+
 .flex {
   display: flex;
 }
@@ -109,10 +113,6 @@ body {
   flex-direction: row;
 }
 
-.padding-view {
-  padding: 5rem;
-}
-
 body * {
   margin: 0;
   font-family: 'Patrick Hand', cursive;
@@ -127,7 +127,7 @@ hr {
 }
 
 a {
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-weight: 600;
   background-color: transparent;
   text-decoration: none;
@@ -147,8 +147,8 @@ h6 {
   align-items: center;
   font-family: 'Noticia Text', serif;
 }
-/* TEXT SIZE */
 
+/* RESPONSIVE */
 @media screen and (min-width: 0px) {
   h1 {
     font-size: 68px;
@@ -164,6 +164,9 @@ h6 {
   }
   a {
     font-size: 30px;
+  }
+  .padding-view {
+    padding: 1rem 2.5rem 5rem 2.5rem;
   }
 }
 
@@ -200,6 +203,10 @@ h6 {
   }
   a {
     font-size: 37px;
+  }
+
+  .padding-view {
+    padding: 5rem;
   }
 }
 
