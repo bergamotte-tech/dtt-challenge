@@ -68,11 +68,53 @@ export default {
   },
   methods: {
     openCan(item: string): void {
+      console.log(item)
       //test : https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3
-      const audio = new Audio(
-        'https://github.com/bergamotte-tech/dtt-challenge/tree/master/src/assets/audio/openingcan.mp3'
+      // const audio = new Audio(
+      //   'https://raw.githubusercontent.com/bergamotte-tech/dtt-challenge/master/src/assets/audio/openingcan.mp3?token=ALBAPS7HTHFSVX5OFWT76XC6L4AV6'
+      // )
+      // audio.play()
+      this.splash()
+    },
+    createDot(filter: HTMLDivElement, x: number, y: number): void {
+      const elem = document.createElement('div')
+      elem.setAttribute('class', 'waterdrop')
+      elem.setAttribute(
+        'style',
+        'left:' +
+          x +
+          '%;top:' +
+          y +
+          '%; position: absolute; background-color: skyblue; width: 4px; height: 4px; border-radius: 0 50% 50% 50%; transform:rotate(45deg); box-shadow: 1px 1px 7px #212121;'
       )
-      audio.play()
+
+      filter.appendChild(elem)
+    },
+    async splash(): Promise<void> {
+      const filter = document.createElement('div')
+      filter.setAttribute('id', 'filter')
+      filter.setAttribute(
+        'style',
+        'position : fixed; z-index: 5500; width: 100vw; height: 100vh'
+      )
+
+      for (let index = 0; index < 400; index++) {
+        this.createDot(
+          filter,
+          Math.floor(Math.random() * 100),
+          Math.floor(Math.random() * 100)
+        )
+      }
+
+      const app = document.getElementById('app')
+      if (app != null) {
+        app.insertBefore(filter, app.childNodes[0])
+        await new Promise(r => setTimeout(r, 2000))
+        console.log('its been 2 secs')
+        filter.parentNode
+          ? filter.parentNode.removeChild(filter)
+          : console.log('parentNode is null')
+      }
     }
   }
 }
