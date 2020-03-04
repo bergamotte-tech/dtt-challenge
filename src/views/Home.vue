@@ -1,15 +1,19 @@
 <template>
   <div id="home" class="padding-view">
     <h1>{{ $t('views.home.title') }}/</h1>
-    <div class="introduction-wrapper flex flex-center">
+    <div class="introduction-wrapper flex">
       <div class="introduction-beer flex">
-        <div id="pour"></div>
-        <div class="beer-shape">
+        <div class="beer-shape flex flex-center">
+          <img
+            src="https://uploads-ssl.webflow.com/5c11655d98d64953510d3830/5c893a6a4793fa2a05a455a5_21A-ElSully-12oz.png"
+            v-bind:alt="$t('alt.image-beer')"
+          />
           <div class="bubble bubble1"></div>
           <div class="bubble bubble2"></div>
           <div class="bubble bubble3"></div>
           <div class="bubble bubble4"></div>
           <div class="bubble bubble5"></div>
+          <div class="text-scroll flex flex-center"><p>scroll -></p></div>
         </div>
       </div>
       <div class="introduction-speech">
@@ -26,97 +30,47 @@
       </div>
     </div>
     <h2>{{ $t('views.home.on-tap') }}:</h2>
+
     <div class="items-wrapper flex flex-center">
-      <div
-        v-for="(item, index) in beers"
-        :key="index"
-        class="item-box flex"
-        @click="openCan(item)"
-      >
-        <img
-          src="https://uploads-ssl.webflow.com/5c11655d98d64953510d3830/5c893a6a4793fa2a05a455a5_21A-ElSully-12oz.png"
-          v-bind:alt="$t('alt.image-beer')"
-        />
-        <div class="description flex flex-center flex-column">
-          <h2>{{ item }}</h2>
-          <p>Description of the beeeeeer</p>
-        </div>
-      </div>
+      <item-box v-for="item in beers" :key="item.id" :item="item"></item-box>
     </div>
+
     <h2>{{ $t('views.home.thirsty') }}:</h2>
+    <button-categories></button-categories>
   </div>
 </template>
 
 <script lang="ts">
+import ItemBox from '@/components/others/ItemBox.vue'
+import ButtonCategories from '@/components/others/ButtonCategories.vue'
+
 export default {
   name: 'home',
+  components: {
+    ButtonCategories,
+    ItemBox
+  },
   data() {
     return {
       beers: [
-        'beer1',
-        'beer2',
-        'beer3',
-        'other',
-        'other',
-        'other',
-        'other',
-        'other',
-        'other',
-        'other'
+        { id: 0, name: 'test', description: 'test' },
+        { id: 1, name: 'test2', description: 'test2' },
+        { id: 2, name: 'test2', description: 'test2' },
+        { id: 3, name: 'test2', description: 'test2' },
+        { id: 4, name: 'test2', description: 'test2' },
+        { id: 5, name: 'test2', description: 'test2' }
       ]
     }
-  },
-  methods: {
-    openCan(item: string): void {
-      console.log(item)
-      //test : https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3
-      // const audio = new Audio(
-      //   'https://raw.githubusercontent.com/bergamotte-tech/dtt-challenge/master/src/assets/audio/openingcan.mp3?token=ALBAPS7HTHFSVX5OFWT76XC6L4AV6'
-      // )
-      // audio.play()
-      this.splash()
-    },
-    createDot(filter: HTMLDivElement, x: number, y: number): void {
-      const elem = document.createElement('div')
-      elem.setAttribute('class', 'waterdrop')
-      elem.setAttribute(
-        'style',
-        'left:' +
-          x +
-          '%;top:' +
-          y +
-          '%; position: absolute; background-color: skyblue; width: 4px; height: 4px; border-radius: 0 50% 50% 50%; transform:rotate(45deg); box-shadow: 1px 1px 7px #212121;'
-      )
-
-      filter.appendChild(elem)
-    },
-    async splash(): Promise<void> {
-      const filter = document.createElement('div')
-      filter.setAttribute('id', 'filter')
-      filter.setAttribute(
-        'style',
-        'position : fixed; z-index: 5500; width: 100vw; height: 100vh'
-      )
-
-      for (let index = 0; index < 400; index++) {
-        this.createDot(
-          filter,
-          Math.floor(Math.random() * 100),
-          Math.floor(Math.random() * 100)
-        )
-      }
-
-      const app = document.getElementById('app')
-      if (app != null) {
-        app.insertBefore(filter, app.childNodes[0])
-        await new Promise(r => setTimeout(r, 2000))
-        console.log('its been 2 secs')
-        filter.parentNode
-          ? filter.parentNode.removeChild(filter)
-          : console.log('parentNode is null')
-      }
-    }
   }
+  // created() {
+  //   EventService.getEvents() // Does a get request
+  //     .then(response => {
+  //       this.events = response.data
+  //     })
+  //     .catch(error => {
+  //       console.log('There was an error:', error.response) // Logs out the error
+  //     })
+  // }
 }
 </script>
 
@@ -128,33 +82,60 @@ export default {
   min-height: 100%;
 }
 
+.text-scroll {
+  position: absolute;
+  z-index: 800;
+  text-transform: uppercase;
+  line-height: 0;
+  white-space: nowrap;
+  padding: 0.2rem;
+  background-color: black;
+
+  top: 50%;
+  left: 100%;
+
+  transform-origin: 0 0;
+  transform: rotate(90deg) translate(-50%, -0%);
+
+  animation: floating 2s ease infinite;
+}
+@keyframes floating {
+  0% {
+    top: 55%;
+  }
+  50% {
+    top: 45%;
+  }
+  100% {
+    top: 55%;
+  }
+}
+
 .introduction-wrapper {
   width: 100%;
   height: auto;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .introduction-beer {
   justify-content: center;
   align-items: center;
-  height: auto;
-  min-width: 30vw;
-  margin: auto;
-  padding: 2rem;
+  height: fit-content;
+  min-width: fit-content;
+  margin: 0 2rem;
 }
 
-.beer-shape::before {
-  content: '';
-  z-index: -1;
-  position: absolute;
-  bottom: 2%;
-  left: 0;
-  right: 0;
-  background-color: yellowgreen;
-  width: 92%;
-  height: 96%;
-  margin: auto;
-  transition: transform 0.25s ease-in-out;
-  border-radius: 2% / 25%;
+.beer-shape {
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.beer-shape img {
+  height: 100%;
+  width: unset;
+  display: block; /* remove extra space below image */
 }
 
 .beer-shape:hover {
@@ -163,46 +144,6 @@ export default {
 
 .introduction-speech h3 {
   float: right;
-}
-
-.items-wrapper {
-  width: 100%;
-  display: grid;
-  grid-gap: 0px;
-  background-color: #fff;
-  color: #444;
-}
-
-.item-box {
-  background-color: pink;
-  height: 65vh;
-}
-.item-box:nth-child(3n + 1) {
-  background-color: sandybrown;
-}
-.item-box img {
-  max-height: 100%;
-  width: auto;
-  display: block; /* remove extra space below image */
-  margin: 0 auto;
-  transition: linear 0.2s;
-}
-.item-box .description {
-  width: 0;
-  opacity: 0;
-  transition: width linear 0.3s, opacity ease-in 0.1s;
-}
-.item-box:hover {
-  cursor: pointer;
-}
-.item-box:hover .description {
-  width: 100%;
-  opacity: 1;
-  transition: width linear 0.4s, opacity ease-out 0.2s 0.2s;
-}
-.item-box:hover img {
-  transform: rotate(-10deg);
-  transition: linear 0.1s;
 }
 
 .bubble {
@@ -220,7 +161,6 @@ export default {
   height: 1vw;
   width: 1vw;
 }
-
 @keyframes bubble {
   0% {
     bottom: 0;
@@ -277,13 +217,15 @@ export default {
   animation-duration: 800ms;
 }
 
-/* RESPONSIVE */
-.beer-shape {
-  z-index: 1;
-  position: relative;
-  background-color: darkgrey;
-  border-radius: 2% / 25%;
+.items-wrapper {
+  width: 100%;
+  display: grid;
+  grid-gap: 0px;
+  background-color: #fff;
+  color: #444;
 }
+
+/* RESPONSIVE */
 
 @media screen and (min-width: 0px) {
   .beer-shape {
@@ -323,7 +265,9 @@ export default {
   .introduction-wrapper {
     flex-direction: row;
   }
+}
 
+@media screen and (min-width: 1100px) {
   .items-wrapper {
     grid-template-columns: 50% 50%;
   }

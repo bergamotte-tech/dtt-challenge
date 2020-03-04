@@ -26,30 +26,6 @@
 </template>
 
 <script lang="ts">
-/**
- * Pieces : Logo + LanguageSelector + Routes + MenuIcon
- * Display :
- *  All :
- *    position: fixed
- *    MenuIcon = cross
- *
- *    @clickMenuIcon : MenuIcon = hamburger
- *
- *
- *  Desktop :
- *        row
- *
- *        @clickMenuIcon : bkgrd = transparent / LanguageSelector & Routes = display none
- *
- *
- *  Mobile :
- *        * : display: none (except MenuIcon)
- *        MenuIcon : bottom : 2px
- *                   right : 2px
- *
- *        @clickMenuIcon : displayMobileNavPage()
- */
-
 import Vue from 'vue'
 import i18n from '@/i18n'
 import LanguageSelection from '@/components/navtop/LanguageSelection.vue'
@@ -73,19 +49,31 @@ export default Vue.extend({
 <style scoped>
 #nav {
   position: fixed;
-  z-index: 800;
+  z-index: 1000;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  background-color: var(--bgrd-primary);
+
   height: 5rem;
   width: 100%;
-
-  background-color: var(--bgrd-primary);
 }
 
 #nav a {
-  font-family: 'Bungee', cursive;
-  font-size: 30px;
   color: var(--text-primary);
+}
+
+/* RESPONSIVE */
+
+@media screen and (min-width: 0px) {
+}
+
+@media screen and (min-width: 300px) {
+}
+
+@media screen and (min-width: 650px) {
+}
+
+@media screen and (min-width: 900px) {
 }
 </style>

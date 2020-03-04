@@ -26,7 +26,8 @@ export default Vue.extend({
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Patrick+Hand&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Noticia+Text&display=swap');
+/* @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap'); */
 
 :root {
   font-size: 16px;
@@ -112,9 +113,9 @@ body {
   padding: 5rem;
 }
 
-body {
+body * {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Patrick Hand', cursive;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
@@ -144,9 +145,8 @@ h6 {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  font-family: 'Patrick Hand', cursive;
+  font-family: 'Noticia Text', serif;
 }
-
 /* TEXT SIZE */
 
 @media screen and (min-width: 0px) {
@@ -161,6 +161,9 @@ h6 {
   }
   p {
     font-size: 15px;
+  }
+  a {
+    font-size: 30px;
   }
 }
 
@@ -177,6 +180,9 @@ h6 {
   p {
     font-size: 18px;
   }
+  a {
+    font-size: 34px;
+  }
 }
 
 @media screen and (min-width: 650px) {
@@ -192,6 +198,9 @@ h6 {
   p {
     font-size: 21px;
   }
+  a {
+    font-size: 37px;
+  }
 }
 
 @media screen and (min-width: 900px) {
@@ -206,6 +215,9 @@ h6 {
   }
   p {
     font-size: 24px;
+  }
+  a {
+    font-size: 40px;
   }
 }
 
@@ -251,6 +263,9 @@ input {
 button,
 select {
   text-transform: none;
+}
+button:hover {
+  cursor: pointer;
 }
 button,
 [type='button'],
