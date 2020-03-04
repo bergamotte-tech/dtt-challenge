@@ -27,8 +27,20 @@
     </div>
     <h2>{{ $t('views.home.on-tap') }}:</h2>
     <div class="items-wrapper flex flex-center">
-      <div v-for="(item, index) in beers" :key="index" class="item-box">
-        <h2>{{ item }}</h2>
+      <div
+        v-for="(item, index) in beers"
+        :key="index"
+        class="item-box flex"
+        @click="openCan(item)"
+      >
+        <img
+          src="https://uploads-ssl.webflow.com/5c11655d98d64953510d3830/5c893a6a4793fa2a05a455a5_21A-ElSully-12oz.png"
+          v-bind:alt="$t('alt.image-beer')"
+        />
+        <div class="description flex flex-center flex-column">
+          <h2>{{ item }}</h2>
+          <p>Description of the beeeeeer</p>
+        </div>
       </div>
     </div>
     <h2>{{ $t('views.home.thirsty') }}:</h2>
@@ -52,6 +64,15 @@ export default {
         'other',
         'other'
       ]
+    }
+  },
+  methods: {
+    openCan(item: string): void {
+      //test : https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3
+      const audio = new Audio(
+        'https://github.com/bergamotte-tech/dtt-challenge/tree/master/src/assets/audio/openingcan.mp3'
+      )
+      audio.play()
     }
   }
 }
@@ -112,10 +133,34 @@ export default {
 
 .item-box {
   background-color: pink;
-  padding-top: 65%;
+  height: 65vh;
 }
 .item-box:nth-child(3n + 1) {
   background-color: sandybrown;
+}
+.item-box img {
+  max-height: 100%;
+  width: auto;
+  display: block; /* remove extra space below image */
+  margin: 0 auto;
+  transition: linear 0.2s;
+}
+.item-box .description {
+  width: 0;
+  opacity: 0;
+  transition: width linear 0.3s, opacity ease-in 0.1s;
+}
+.item-box:hover {
+  cursor: pointer;
+}
+.item-box:hover .description {
+  width: 100%;
+  opacity: 1;
+  transition: width linear 0.4s, opacity ease-out 0.2s 0.2s;
+}
+.item-box:hover img {
+  transform: rotate(-10deg);
+  transition: linear 0.1s;
 }
 
 .bubble {
@@ -124,6 +169,9 @@ export default {
   -webkit-animation-name: bubble;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
+  animation-name: bubble;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
   background-color: rgba(255, 255, 255, 0.2);
   bottom: 0;
   border-radius: 50%;
@@ -131,7 +179,7 @@ export default {
   width: 1vw;
 }
 
-@-webkit-keyframes bubble {
+@keyframes bubble {
   0% {
     bottom: 0;
   }
@@ -151,30 +199,40 @@ export default {
   left: 10%;
   -webkit-animation-delay: 1000ms;
   -webkit-animation-duration: 1000ms;
+  animation-delay: 1000ms;
+  animation-duration: 1000ms;
 }
 
 .bubble2 {
   left: 50%;
   -webkit-animation-delay: 700ms;
   -webkit-animation-duration: 1100ms;
+  animation-delay: 700ms;
+  animation-duration: 1100ms;
 }
 
 .bubble3 {
   left: 60%;
   -webkit-animation-delay: 1200ms;
   -webkit-animation-duration: 1300ms;
+  animation-delay: 1200ms;
+  animation-duration: 1300ms;
 }
 
 .bubble4 {
   left: 70%;
   -webkit-animation-delay: 1100ms;
   -webkit-animation-duration: 700ms;
+  animation-delay: 1100ms;
+  animation-duration: 700ms;
 }
 
 .bubble5 {
   left: 92%;
   -webkit-animation-delay: 1300ms;
   -webkit-animation-duration: 800ms;
+  animation-delay: 1300ms;
+  animation-duration: 800ms;
 }
 
 /* RESPONSIVE */
