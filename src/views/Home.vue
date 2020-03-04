@@ -261,13 +261,18 @@ export default {
     height: 600px;
     width: 300px;
   }
+}
+
+@media screen and (min-width: 1200px) {
+  .beer-shape {
+    height: 700px;
+    width: 350px;
+  }
 
   .introduction-wrapper {
     flex-direction: row;
   }
-}
 
-@media screen and (min-width: 1100px) {
   .items-wrapper {
     grid-template-columns: 50% 50%;
   }

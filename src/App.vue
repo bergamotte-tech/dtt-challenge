@@ -3,17 +3,20 @@
     <age-verification />
     <navbar />
     <router-view />
+    <footerbar />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import Navbar from '@/components/navtop/Navbar.vue'
+import Footerbar from '@/components/navbottom/Footerbar.vue'
 import AgeVerification from '@/components/others/AgeVerification.vue'
 
 export default Vue.extend({
   name: 'app',
   components: {
+    Footerbar,
     Navbar,
     AgeVerification
   },
@@ -151,16 +154,16 @@ h6 {
 /* RESPONSIVE */
 @media screen and (min-width: 0px) {
   h1 {
-    font-size: 68px;
+    font-size: 50px;
   }
   h2 {
-    font-size: 26px;
+    font-size: 22px;
   }
   h3 {
     font-size: 19px;
   }
   p {
-    font-size: 15px;
+    font-size: 13px;
   }
   a {
     font-size: 30px;
@@ -172,16 +175,16 @@ h6 {
 
 @media screen and (min-width: 300px) {
   h1 {
-    font-size: 76px;
+    font-size: 60px;
   }
   h2 {
-    font-size: 30px;
+    font-size: 25px;
   }
   h3 {
     font-size: 22px;
   }
   p {
-    font-size: 18px;
+    font-size: 16px;
   }
   a {
     font-size: 34px;
@@ -193,13 +196,13 @@ h6 {
     font-size: 82px;
   }
   h2 {
-    font-size: 34px;
+    font-size: 30px;
   }
   h3 {
     font-size: 25px;
   }
   p {
-    font-size: 21px;
+    font-size: 19px;
   }
   a {
     font-size: 37px;

@@ -12,7 +12,6 @@ const routes: Array<RouteConfig> = [
     redirect: `/${i18n.locale}`
   }
 ]
-
 // fill routes with available locales
 // NOTES : declare dynamic segments here, not in json as it will be considered a String
 // NOTES : nested paths that start with / will be treated as a root path. This allows you to leverage the component nesting without having to use a nested URL.
@@ -75,6 +74,9 @@ const router = new VueRouter({
   mode: 'history' //'hash' if unsupported
 })
 
+import { getRoutesList } from './generateSitemap'
+const sitemap: Array<string> = getRoutesList(routes, window.location.href)
+
 router.beforeEach((to, from, next) => {
   if (from.name === to.name) {
     next()
@@ -107,4 +109,4 @@ router.beforeEach((to, from, next) => {
   }
 })
 
-export default router
+export { router, sitemap }

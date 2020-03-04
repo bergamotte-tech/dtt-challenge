@@ -1,5 +1,5 @@
 <template>
-  <div class="item-box flex" @click="openCan()">
+  <div class="item-box flex flex-center" @click="openCan()">
     <img
       src="https://uploads-ssl.webflow.com/5c11655d98d64953510d3830/5c893a6a4793fa2a05a455a5_21A-ElSully-12oz.png"
       v-bind:alt="$t('alt.image-beer')"
@@ -74,39 +74,32 @@ export default Vue.extend({
 <style scoped>
 .item-box {
   background-color: pink;
-  height: 65vh;
 }
 .item-box:nth-child(3n + 1) {
   background-color: sandybrown;
 }
-.item-box img {
-  max-height: 100%;
-  width: auto;
-  display: block; /* remove extra space below image */
-  margin: 0 auto;
-  transition: linear 0.2s;
-}
-.item-box .description {
-  width: 0;
-  opacity: 0;
-  transition: width linear 0.3s, opacity ease-in 0.1s;
-}
+
 .item-box:hover {
   cursor: pointer;
 }
-.item-box:hover .description {
-  width: 100%;
-  opacity: 1;
-  transition: width linear 0.4s, opacity ease-out 0.2s 0.2s;
-}
-.item-box:hover img {
-  transform: rotate(-10deg);
-  transition: linear 0.1s;
+
+.item-box img {
+  width: auto;
+  display: block; /* remove extra space below image */
+  margin: 0 auto;
 }
 
 /* RESPONSIVE */
 
 @media screen and (min-width: 0px) {
+  .item-box .description {
+    width: 100%;
+    opacity: 1;
+  }
+  .item-box img {
+    height: 50vw;
+    transform: rotate(-10deg);
+  }
 }
 
 @media screen and (min-width: 300px) {
@@ -116,5 +109,35 @@ export default Vue.extend({
 }
 
 @media screen and (min-width: 900px) {
+}
+
+@media screen and (min-width: 1200px) {
+  /* END OF "MOBILE LIKE" DISPLAY FOR ITEMS */
+
+  .item-box {
+    height: 600px;
+  }
+
+  .item-box .description {
+    width: 0;
+    opacity: 0;
+    transition: width linear 0.3s, opacity ease-in 0.1s;
+  }
+
+  .item-box img {
+    height: 80%;
+    transform: none;
+    transition: linear 0.2s;
+  }
+
+  .item-box:hover .description {
+    width: 100%;
+    opacity: 1;
+    transition: width linear 0.4s, opacity ease-out 0.2s 0.2s;
+  }
+  .item-box:hover img {
+    transform: rotate(-10deg);
+    transition: linear 0.1s;
+  }
 }
 </style>

@@ -7,7 +7,7 @@
       </div>
 
       <div class="routes-wrapper flex flex-center">
-        <div class="route" @click="routeClicked()">
+        <div class="route" @click.stop="routeClicked()">
           <router-link
             :to="{
               name: locale + '-home'
@@ -17,7 +17,7 @@
           </router-link>
         </div>
 
-        <div class="route" @click="routeClicked()">
+        <div class="route" @click.stop="routeClicked()">
           <router-link
             :to="{
               name: locale + '-categories'
@@ -27,7 +27,7 @@
           </router-link>
         </div>
 
-        <div class="route" @click="routeClicked()">
+        <div class="route" @click.stop="routeClicked()">
           <router-link
             :to="{
               name: locale + '-random'
@@ -39,7 +39,7 @@
       </div>
     </div>
 
-    <div class="hamburger flex flex-center" @click="hamburgerClicked()">
+    <div class="hamburger flex flex-center" @click.stop="hamburgerClicked()">
       <i id="hamburger-logo" class="material-icons">
         menu
       </i>
@@ -75,9 +75,11 @@ export default Vue.extend({
 
       if (hamburgerLogo != null) {
         if (hamburgerIsOpen) {
+          hamburgerLogo.style.transform = 'scale(2.2)'
           this.hideMenu(false)
           hamburgerLogo.innerHTML = 'close'
         } else {
+          hamburgerLogo.style.transform = 'scale(1.8)'
           this.hideMenu(true)
           hamburgerLogo.innerHTML = 'menu'
         }
@@ -104,7 +106,7 @@ export default Vue.extend({
     }
   },
   watch: {
-    $route(to, from) {
+    $route() {
       this.reset()
     }
   },
@@ -140,9 +142,7 @@ export default Vue.extend({
   }
   .hamburger i {
     transform: scale(1.8);
-  }
-  .hamburger:hover {
-    cursor: pointer;
+    transition: ease-in-out 0.3s;
   }
 
   .nav-wrapper {

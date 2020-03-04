@@ -9,7 +9,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import i18n from '@/i18n'
-import router from '../../router'
+import { router } from '../../router'
 
 export default Vue.extend({
   name: 'button-categories',
