@@ -1,15 +1,12 @@
 <template>
   <div class="item-box flex flex-center" @click="openCan()">
-    <img
-      src="https://uploads-ssl.webflow.com/5c11655d98d64953510d3830/5c893a6a4793fa2a05a455a5_21A-ElSully-12oz.png"
-      v-bind:alt="$t('alt.image-beer')"
-    />
+    <img v-bind:src="this.getRandomImage()" v-bind:alt="$t('alt.image-beer')" />
     <div class="description flex flex-center flex-column">
       <h2>{{ item.name }}</h2>
       <p>{{ item.cat_name }}</p>
       <p>{{ item.country }}</p>
       <p>{{ item.style_name }}</p>
-      <p>{{ item.ibu }}</p>
+      <p>IBU: {{ item.ibu }}</p>
     </div>
   </div>
 </template>
@@ -28,6 +25,22 @@ export default Vue.extend({
     openCan(): void {
       const audio = new Audio('http://bergamotte.tech/sounds/openingcan.mp3')
       audio.play()
+    },
+    getRandomImage(): string {
+      const listOfImages: string[] = [
+        'https://uploads-ssl.webflow.com/5c11655d98d64953510d3830/5c87f2063af90361ec6e78c9_21A-BrewFreeOrDie-12oz.png',
+        'https://uploads-ssl.webflow.com/5c11655d98d64953510d3830/5c87e9e3b774e464f4203493_21A-BrewFreeBloodOrange-12oz.png',
+        'https://uploads-ssl.webflow.com/5c11655d98d64953510d3830/5c8983d7372666468a9690c4_21A-Sparkale-12oz.png',
+        'https://uploads-ssl.webflow.com/5c11655d98d64953510d3830/5c893a6a4793fa2a05a455a5_21A-ElSully-12oz.png',
+        'https://uploads-ssl.webflow.com/5c11655d98d64953510d3830/5c7ec4fec110bf46b686441f_21A-BlahBlahBlah-12oz.png',
+        'https://uploads-ssl.webflow.com/5c11655d98d64953510d3830/5c89872ae1917deb25a6f079_21A-HellorHighWatermelon-Can.png',
+        'https://uploads-ssl.webflow.com/5c11655d98d64953510d3830/5c13e9e1aad968540738870a_21A-TastyIPA-12oz.png',
+        'https://uploads-ssl.webflow.com/5c11655d98d64953510d3830/5c89858de1917d2586a6ee5f_21A-FiresideChat-Can.png',
+        'https://uploads-ssl.webflow.com/5c11655d98d64953510d3830/5e27771504715a93a1be0816_21A-Peets-1966-CoffeeIPA-12oz-1.png',
+        'https://uploads-ssl.webflow.com/5c11655d98d64953510d3830/5d927982c092fb4d31647359_21A-MonksBlood-12oz.png'
+      ]
+      const item = listOfImages[Math.floor(Math.random() * listOfImages.length)]
+      return item
     }
   }
 })
@@ -37,7 +50,7 @@ export default Vue.extend({
 .item-box {
   background-color: pink;
 }
-.item-box:nth-child(3n + 1) {
+.item-box:nth-child(odd) {
   background-color: sandybrown;
 }
 

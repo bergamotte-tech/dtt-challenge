@@ -41,6 +41,15 @@ for (let i = 0; i < locales.length; i++) {
         component: () => import('@/views/Categories.vue')
       },
       {
+        path:
+          '/' +
+          locales[i] +
+          `/${i18n.t('router.path-categories', locales[i])}` +
+          '/:idcat',
+        name: locales[i] + '-category-details',
+        component: () => import('@/views/CategoryDetails.vue')
+      },
+      {
         path: '/' + locales[i] + `/${i18n.t('router.path-random', locales[i])}`,
         name: locales[i] + '-random',
         component: () => import('@/views/Random.vue')

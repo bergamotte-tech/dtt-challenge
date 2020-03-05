@@ -154,7 +154,7 @@ h6 {
 /* RESPONSIVE */
 @media screen and (min-width: 0px) {
   h1 {
-    font-size: 50px;
+    font-size: 40px;
   }
   h2 {
     font-size: 22px;
@@ -169,13 +169,13 @@ h6 {
     font-size: 30px;
   }
   .padding-view {
-    padding: 1rem 2.5rem 5rem 2.5rem;
+    padding: 1rem 1rem 2rem 1rem;
   }
 }
 
 @media screen and (min-width: 300px) {
   h1 {
-    font-size: 60px;
+    font-size: 50px;
   }
   h2 {
     font-size: 25px;
@@ -193,7 +193,7 @@ h6 {
 
 @media screen and (min-width: 650px) {
   h1 {
-    font-size: 82px;
+    font-size: 62px;
   }
   h2 {
     font-size: 30px;
@@ -347,5 +347,25 @@ textarea {
 }
 [hidden] {
   display: none;
+}
+
+.items-wrapper {
+  width: 100%;
+  display: grid;
+  grid-gap: 0px;
+  background-color: inherit;
+  color: #444;
+}
+
+@media screen and (min-width: 0px) {
+  .items-wrapper {
+    grid-template-columns: 100%;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .items-wrapper {
+    grid-template-columns: 50% 50%;
+  }
 }
 </style>

@@ -1,33 +1,78 @@
 <template>
   <div id="categories" class="padding-view">
     <h1>{{ $t('views.categories.title') }}/</h1>
-    <div class="introduction-wrapper flex flex-row"></div>
-    <h2>Whatever:</h2>
-    <div class="items-wrapper flex flex-row"></div>
-    <h2>Whatever:</h2>
+
+    <div class="items-wrapper flex flex-center">
+      <loader v-if="categories.length < 1"> </loader>
+      <category-box
+        v-for="item in categories"
+        :key="item.id"
+        :item="item"
+      ></category-box>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-export default {
-  name: 'categories'
-}
+import Vue from 'vue'
+import { Category } from '@/data/BeerInterface'
+import BeerService from '@/data/BeerService'
+import CategoryBox from '@/components/others/CategoryBox.vue'
+import Loader from '@/components/others/Loader.vue'
+
+export default Vue.extend({
+  name: 'categories',
+  components: {
+    Loader,
+    CategoryBox
+  },
+  data() {
+    return {
+      categories: Array<Category>()
+    }
+  },
+  created(): void {
+    BeerService.getCategories().then(
+      categories => (this.categories = categories)
+    )
+  }
+})
 </script>
 
 <style scoped>
+/* GENERAL */
+
 #categories {
   background-color: blueviolet;
   min-height: 100%;
 }
 
-.introduction-wrapper {
-  background-color: cornflowerblue;
-  width: 100%;
-  height: 400px;
-}
 .items-wrapper {
-  background-color: darkcyan;
   width: 100%;
-  height: 400px;
+  display: grid;
+  grid-gap: 0px;
+}
+
+/* RESPONSIVE */
+
+@media screen and (min-width: 0px) {
+  .items-wrapper {
+    grid-template-columns: 100%;
+  }
+}
+
+@media screen and (min-width: 300px) {
+}
+
+@media screen and (min-width: 650px) {
+}
+
+@media screen and (min-width: 900px) {
+  .items-wrapper {
+    grid-template-columns: 50% 50%;
+  }
+}
+
+@media screen and (min-width: 1400px) {
 }
 </style>

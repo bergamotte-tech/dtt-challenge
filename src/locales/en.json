@@ -45,6 +45,9 @@
     "categories": {
       "title": "Categories"
     },
+    "categories-details": {
+      "title": "Category"
+    },
 
     "details": {
       "title": "Details"
@@ -63,7 +66,8 @@
 
   "alt": {
     "image-beer": "Image of a beer can",
-    "image-juice": "Image of a juice can"
+    "image-juice": "Image of a juice can",
+    "image-barrel": "Image of a wooden beer barrel"
   },
 
   "buttons": {

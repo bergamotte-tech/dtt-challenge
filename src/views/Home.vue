@@ -22,9 +22,7 @@
           quis rem saepe alias molestias, fugiat deserunt nulla pariatur dolorem
           vero laboriosam suscipit dicta omnis ratione dolorum. Veritatis,
           necessitatibus deleniti! Lorem ipsum, dolor sit amet consectetur
-          adipisicing elit. Voluptatum quaerat aliquid tempora? A vitae maiores
-          esse praesentium, nobis at alias quae illo reprehenderit blanditiis
-          ducimus quia officiis voluptas suscipit. Suscipit.
+          adipisicing elit. Voluptatum quaerat aliquid tempora?
         </p>
         <h3>CHEERS !</h3>
       </div>
@@ -32,7 +30,8 @@
     <h2>{{ $t('views.home.on-tap') }}:</h2>
 
     <div class="items-wrapper flex flex-center">
-      <item-box v-for="item in topBeers" :key="item.id" :item="item"></item-box>
+      <loader v-if="beers.length < 1"> </loader>
+      <item-box v-for="item in beers" :key="item.id" :item="item"></item-box>
     </div>
 
     <h2>{{ $t('views.home.thirsty') }}:</h2>
@@ -46,20 +45,22 @@ import ItemBox from '@/components/others/ItemBox.vue'
 import ButtonCategories from '@/components/others/ButtonCategories.vue'
 import { SimplifiedBeer } from '@/data/BeerInterface'
 import BeerService from '@/data/BeerService'
+import Loader from '@/components/others/Loader.vue'
 
 export default Vue.extend({
   name: 'home',
   components: {
+    Loader,
     ButtonCategories,
     ItemBox
   },
   data() {
     return {
-      topBeers: Array<SimplifiedBeer>()
+      beers: Array<SimplifiedBeer>()
     }
   },
   created(): void {
-    BeerService.getBeers(10).then(topBeers => (this.topBeers = topBeers))
+    BeerService.getBeers(10).then(beers => (this.beers = beers))
   }
 })
 </script>
@@ -207,14 +208,6 @@ export default Vue.extend({
   animation-duration: 800ms;
 }
 
-.items-wrapper {
-  width: 100%;
-  display: grid;
-  grid-gap: 0px;
-  background-color: #fff;
-  color: #444;
-}
-
 /* RESPONSIVE */
 
 @media screen and (min-width: 0px) {
@@ -225,10 +218,6 @@ export default Vue.extend({
 
   .introduction-wrapper {
     flex-direction: column;
-  }
-
-  .items-wrapper {
-    grid-template-columns: 100%;
   }
 }
 
@@ -261,10 +250,6 @@ export default Vue.extend({
 
   .introduction-wrapper {
     flex-direction: row;
-  }
-
-  .items-wrapper {
-    grid-template-columns: 50% 50%;
   }
 }
 </style>
