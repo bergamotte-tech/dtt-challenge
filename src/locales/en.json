@@ -50,7 +50,8 @@
     },
 
     "beer-details": {
-      "title": "Details"
+      "title": "Details",
+      "similar": "By the same brewery :"
     },
 
     "home": {

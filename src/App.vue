@@ -169,25 +169,22 @@ h6,
 /* RESPONSIVE */
 @media screen and (min-width: 0px) {
   h1 {
-    font-size: 40px;
+    font-size: 9.3vw;
   }
   h2 {
-    font-size: 22px;
+    font-size: 7.2vw;
   }
   h3 {
-    font-size: 19px;
+    font-size: 8vw;
   }
   p {
-    font-size: 13px;
+    font-size: 2.7vw;
   }
   a {
-    font-size: 30px;
-  }
-  .padding-view {
-    padding: 1rem 1rem 2rem 1rem;
+    font-size: 4vw;
   }
 }
-
+/* 
 @media screen and (min-width: 300px) {
   h1 {
     font-size: 50px;
@@ -243,6 +240,17 @@ h6,
   }
   a {
     font-size: 40px;
+  }
+} */
+@media screen and (min-width: 0px) {
+  .padding-view {
+    padding: 1rem 1rem 2rem 1rem;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .padding-view {
+    padding: 5rem;
   }
 }
 

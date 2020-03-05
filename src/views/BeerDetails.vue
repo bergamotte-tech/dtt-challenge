@@ -2,15 +2,22 @@
   <div id="beer-details" class="padding-view">
     <h1>
       {{ $t('views.beer-details.title') }}:
-      {{ toNormalName(beerName) }}
+      {{ selectedBeer.name }}
     </h1>
-    <item-box :beer="selectedBeer" :displayDetails="true"></item-box>
-    <div class="flex flex-row flex-center">
+    <loader v-if="!selectedBeer"> </loader>
+    <item-box
+      :beer="selectedBeer"
+      :displayDetails="true"
+      class="details"
+    ></item-box>
+    <h2>{{ $t('views.beer-details.similar') }}</h2>
+    <div class="similar flex flex-row flex-center">
       <loader v-if="similarBeers.length < 1"> </loader>
       <item-box
         v-for="beer in similarBeers"
         :key="beer.id"
         :beer="beer"
+        class="similar"
       ></item-box>
     </div>
   </div>
@@ -30,10 +37,7 @@ export default Vue.extend({
     ItemBox
   },
   props: {
-    beerId: {
-      type: String
-    },
-    beerName: {
+    idbeer: {
       type: String
     }
   },
@@ -46,32 +50,38 @@ export default Vue.extend({
   methods: {
     toNormalName(normalizedName: string): string {
       return normalizedName.replace(/\+/g, ' ')
+    },
+    init(): void {
+      BeerService.getSingleBeer(this.idbeer).then(
+        beer => (
+          ((this.selectedBeer = beer), console.log(beer.brewery_id)),
+          BeerService.getSimilarBeers('1', 3).then(
+            beers => (this.similarBeers = beers)
+          )
+        )
+      )
+
+      // TODO pass style id or similar : pbl undefined car async ? undefined dans le reste aussi, ptetre possiblement null ?
+      // BeerService.getSimilarBeers('2', 3).then(
+      //   beers => (this.similarBeers = beers)
+      // )
     }
   },
   created(): void {
-    BeerService.getSingleBeer(this.beerId).then(
-      beer => (this.selectedBeer = beer)
-    )
-    BeerService.getBeers(3).then(beers => (this.similarBeers = beers))
-    //getSimilarBeers
+    this.init()
+  },
+  watch: {
+    $route() {
+      console.log('ha')
+      this.init()
+    }
   }
 })
 </script>
 
 <style scoped>
-#details {
-  background-color: blueviolet;
+#beer-details {
+  background-color: black;
   min-height: 100%;
-}
-
-.introduction-wrapper {
-  background-color: cornflowerblue;
-  width: 100%;
-  height: 400px;
-}
-.items-wrapper {
-  background-color: darkcyan;
-  width: 100%;
-  height: 400px;
 }
 </style>

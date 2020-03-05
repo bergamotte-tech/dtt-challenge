@@ -16,7 +16,7 @@
       <p>{{ beer.country }}</p>
       <p>{{ beer.style_name }}</p>
       <p>IBU: {{ beer.ibu }}</p>
-      <p v-if="displayDetails">{{ beer.city }}</p>
+      <p v-if="displayDetails">City: {{ beer.city }}</p>
       <p v-if="displayDetails">{{ beer.website }}</p>
       <p v-if="displayDetails">ID: {{ beer.id }}</p>
     </div>
@@ -42,10 +42,9 @@ export default Vue.extend({
       const audio = new Audio('http://bergamotte.tech/sounds/openingcan.mp3')
       audio.play()
 
-      const transformedName = this.beer.name.replace(/\s/g, '+')
       this.$router.push({
         name: this.$i18n.locale + '-details',
-        params: { beerId: this.beer.id, beerName: transformedName }
+        params: { idbeer: this.beer.id }
       })
     },
     getNextImage(): string {
@@ -135,5 +134,18 @@ export default Vue.extend({
     transform: rotate(-10deg);
     transition: linear 0.1s;
   }
+}
+
+.similar .description {
+  display: none;
+}
+
+.details .description {
+  width: 100%;
+  opacity: 1;
+  margin: 0 2rem;
+}
+.details img {
+  transform: rotate(-10deg);
 }
 </style>

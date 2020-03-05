@@ -59,7 +59,7 @@ for (let i = 0; i < locales.length; i++) {
           '/' +
           locales[i] +
           `/${i18n.t('router.path-details', locales[i])}` +
-          '/:beerName',
+          '/:idbeer',
         name: locales[i] + '-details',
         component: () => import('@/views/BeerDetails.vue'),
         props: true

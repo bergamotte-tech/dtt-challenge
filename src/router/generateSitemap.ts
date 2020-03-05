@@ -23,4 +23,3 @@ export function getRoutesList(
   }
   return routesList
 }
-//console.log(getRoutesList(routes, window.location.href))

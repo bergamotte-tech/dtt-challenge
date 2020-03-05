@@ -45,38 +45,42 @@ export interface Geometry {
   type: string
   coordinates?: number[] | null
 }
-export interface SimplifiedBeer {
-  name: string
-  cat_name?: string | null
-  cat_id: string
-  country: string
-  city: string
-  style_name?: string | null
-  id: string
-  ibu: number
-  website?: string | null
-}
+// export interface SimplifiedBeer {
+//   name: string
+//   cat_name?: string | null
+//   cat_id: string
+//   country: string
+//   city: string
+//   style_name?: string | null
+//   id: string
+//   ibu: number
+//   website?: string | null
+// }
 
 export class SimplifiedBeerClass {
   public name: string
+  public cat_name?: string | null
   public cat_id: string
   public country: string
+  public city: string
   public id: string
   public ibu: number
-  public cat_name?: string | null
   public style_name?: string | null
+  public brewery_id: string
   public website?: string | null
 
   constructor() {
     this.name = 'name'
+    this.city = 'city'
     this.cat_id = 'cat_id'
     this.country = 'country'
     this.id = 'id'
     this.ibu = 0
+    this.brewery_id = '1'
   }
 }
 //CATEGORIES
-export interface Weather {
+export interface CategoryRecords {
   nhits: number
   parameters: Parameters
   records?: null[] | null
