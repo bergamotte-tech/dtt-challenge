@@ -32,7 +32,7 @@
     <h2>{{ $t('views.home.on-tap') }}:</h2>
 
     <div class="items-wrapper flex flex-center">
-      <item-box v-for="item in beers" :key="item.id" :item="item"></item-box>
+      <item-box v-for="item in topBeers" :key="item.id" :item="item"></item-box>
     </div>
 
     <h2>{{ $t('views.home.thirsty') }}:</h2>
@@ -41,10 +41,13 @@
 </template>
 
 <script lang="ts">
+import Vue from 'vue'
 import ItemBox from '@/components/others/ItemBox.vue'
 import ButtonCategories from '@/components/others/ButtonCategories.vue'
+import { SimplifiedBeer } from '@/data/BeerInterface'
+import BeerService from '@/data/BeerService'
 
-export default {
+export default Vue.extend({
   name: 'home',
   components: {
     ButtonCategories,
@@ -52,26 +55,13 @@ export default {
   },
   data() {
     return {
-      beers: [
-        { id: 0, name: 'test', description: 'test' },
-        { id: 1, name: 'test2', description: 'test2' },
-        { id: 2, name: 'test2', description: 'test2' },
-        { id: 3, name: 'test2', description: 'test2' },
-        { id: 4, name: 'test2', description: 'test2' },
-        { id: 5, name: 'test2', description: 'test2' }
-      ]
+      topBeers: Array<SimplifiedBeer>()
     }
+  },
+  created(): void {
+    BeerService.getBeers(10).then(topBeers => (this.topBeers = topBeers))
   }
-  // created() {
-  //   EventService.getEvents() // Does a get request
-  //     .then(response => {
-  //       this.events = response.data
-  //     })
-  //     .catch(error => {
-  //       console.log('There was an error:', error.response) // Logs out the error
-  //     })
-  // }
-}
+})
 </script>
 
 <style scoped>
@@ -263,7 +253,7 @@ export default {
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1400px) {
   .beer-shape {
     height: 700px;
     width: 350px;

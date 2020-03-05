@@ -6,7 +6,10 @@
     />
     <div class="description flex flex-center flex-column">
       <h2>{{ item.name }}</h2>
-      <p>{{ item.description }}</p>
+      <p>{{ item.cat_name }}</p>
+      <p>{{ item.country }}</p>
+      <p>{{ item.style_name }}</p>
+      <p>{{ item.ibu }}</p>
     </div>
   </div>
 </template>
@@ -25,48 +28,7 @@ export default Vue.extend({
     openCan(): void {
       const audio = new Audio('http://bergamotte.tech/sounds/openingcan.mp3')
       audio.play()
-      // this.splash() //creates a splash on screen, but removed for accessibility reasons
     }
-    // createDot(filter: HTMLDivElement, x: number, y: number): void {
-    //   const elem = document.createElement('div')
-    //   elem.setAttribute('class', 'waterdrop')
-    //   elem.setAttribute(
-    //     'style',
-    //     'left:' +
-    //       x +
-    //       '%;top:' +
-    //       y +
-    //       '%; position: absolute; background-color: skyblue; width: 4px; height: 4px; border-radius: 0 50% 50% 50%; transform:rotate(45deg); box-shadow: 1px 1px 7px #212121;'
-    //   )
-
-    //   filter.appendChild(elem)
-    // }
-    // async splash(): Promise<void> {
-    //   const filter = document.createElement('div')
-    //   filter.setAttribute('id', 'filter')
-    //   filter.setAttribute(
-    //     'style',
-    //     'position : fixed; z-index: 5500; width: 100vw; height: 100vh'
-    //   )
-
-    //   for (let index = 0; index < 400; index++) {
-    //     this.createDot(
-    //       filter,
-    //       Math.floor(Math.random() * 100),
-    //       Math.floor(Math.random() * 100)
-    //     )
-    //   }
-
-    //   const app = document.getElementById('app')
-    //   if (app != null) {
-    //     app.insertBefore(filter, app.childNodes[0])
-    //     await new Promise(r => setTimeout(r, 2000))
-    //     console.log('its been 2 secs')
-    //     filter.parentNode
-    //       ? filter.parentNode.removeChild(filter)
-    //       : console.log('parentNode is null')
-    //   }
-    // }
   }
 })
 </script>
@@ -85,7 +47,7 @@ export default Vue.extend({
 
 .item-box img {
   width: auto;
-  display: block; /* remove extra space below image */
+  display: block;
   margin: 0 auto;
 }
 
@@ -95,6 +57,7 @@ export default Vue.extend({
   .item-box .description {
     width: 100%;
     opacity: 1;
+    margin: 0 2rem;
   }
   .item-box img {
     height: 50vw;
@@ -109,9 +72,6 @@ export default Vue.extend({
 }
 
 @media screen and (min-width: 900px) {
-}
-
-@media screen and (min-width: 1200px) {
   /* END OF "MOBILE LIKE" DISPLAY FOR ITEMS */
 
   .item-box {
@@ -119,6 +79,7 @@ export default Vue.extend({
   }
 
   .item-box .description {
+    overflow: hidden;
     width: 0;
     opacity: 0;
     transition: width linear 0.3s, opacity ease-in 0.1s;

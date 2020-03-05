@@ -88,13 +88,9 @@ export default Vue.extend({
     hideMenu(bool: boolean): void {
       const menuHiddenElement = document.getElementById('menuHidden')
       if (bool) {
-        menuHiddenElement
-          ? (menuHiddenElement.style.display = 'none')
-          : console.log('error element does not exist')
+        if (menuHiddenElement) menuHiddenElement.style.display = 'none'
       } else {
-        menuHiddenElement
-          ? (menuHiddenElement.style.display = 'flex')
-          : console.log('error element does not exist')
+        if (menuHiddenElement) menuHiddenElement.style.display = 'flex'
       }
     },
     reset(): void {
