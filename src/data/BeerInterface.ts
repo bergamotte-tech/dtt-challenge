@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 //BEERS
 export interface RawRecords {
   nhits: number
@@ -49,12 +50,31 @@ export interface SimplifiedBeer {
   cat_name?: string | null
   cat_id: string
   country: string
+  city: string
   style_name?: string | null
   id: string
   ibu: number
   website?: string | null
 }
 
+export class SimplifiedBeerClass {
+  public name: string
+  public cat_id: string
+  public country: string
+  public id: string
+  public ibu: number
+  public cat_name?: string | null
+  public style_name?: string | null
+  public website?: string | null
+
+  constructor() {
+    this.name = 'name'
+    this.cat_id = 'cat_id'
+    this.country = 'country'
+    this.id = 'id'
+    this.ibu = 0
+  }
+}
 //CATEGORIES
 export interface Weather {
   nhits: number
@@ -82,4 +102,11 @@ export interface FacetsEntity {
 
 export interface Category {
   cat_name?: string | null
+}
+
+export class CategoryClass {
+  public cat_name?: string | null
+  constructor() {
+    this.cat_name = 'cat_name'
+  }
 }

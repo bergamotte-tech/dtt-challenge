@@ -5,9 +5,9 @@
     <div class="items-wrapper flex flex-center">
       <loader v-if="categories.length < 1"> </loader>
       <category-box
-        v-for="item in categories"
-        :key="item.id"
-        :item="item"
+        v-for="category in categories"
+        :key="category.id"
+        :category="category"
       ></category-box>
     </div>
   </div>
@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { Category } from '@/data/BeerInterface'
+import { CategoryClass } from '@/data/BeerInterface'
 import BeerService from '@/data/BeerService'
 import CategoryBox from '@/components/others/CategoryBox.vue'
 import Loader from '@/components/others/Loader.vue'
@@ -28,7 +28,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      categories: Array<Category>()
+      categories: Array<CategoryClass>()
     }
   },
   created(): void {

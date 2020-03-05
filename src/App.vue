@@ -2,7 +2,9 @@
   <div id="app">
     <age-verification />
     <navbar />
-    <router-view />
+    <transition name="fade" mode="out-in">
+      <router-view />
+    </transition>
     <footerbar />
   </div>
 </template>
@@ -31,6 +33,18 @@ export default Vue.extend({
 @import url('https://fonts.googleapis.com/css?family=Patrick+Hand&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Noticia+Text&display=swap');
 /* @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap'); */
+
+.fade-enter-active,
+.fade-leave-active {
+  transition-duration: 0.3s;
+  transition-property: opacity;
+  transition-timing-function: ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
 
 :root {
   font-size: 16px;
@@ -144,7 +158,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+#nav .route * {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -261,7 +276,6 @@ optgroup,
 select,
 textarea {
   display: inline-flex;
-  font-family: 'Roboto', sans-serif;
   font-size: 100%;
   line-height: 1.15;
   margin: 0;
@@ -367,5 +381,27 @@ textarea {
   .items-wrapper {
     grid-template-columns: 50% 50%;
   }
+}
+
+.clicker,
+.clicker:hover,
+.clicker:active {
+  overflow: hidden;
+  transform: initial;
+  width: 100%;
+  height: 100%;
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.clicker:active {
+  transform: scale(1.05);
+  transition: ease-in-out 0.1s;
 }
 </style>

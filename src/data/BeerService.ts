@@ -2,9 +2,10 @@
 import axios from 'axios'
 import {
   RawRecords,
-  SimplifiedBeer,
   Category,
-  Weather
+  Weather,
+  SimplifiedBeerClass,
+  CategoryClass
 } from '@/data/BeerInterface'
 
 const apiClient = axios.create({
@@ -34,6 +35,24 @@ export default {
     return this.toSimplifiedBeers(items.data)
   },
 
+  async getSingleBeer(id: string) {
+    const items = await apiClient.get<RawRecords>(
+      '/api/records/1.0/search/?dataset=open-beer-database%40public-us&q=id%3D' +
+        id
+    )
+    return this.toSimplifiedSingleBeer(items.data)
+  },
+
+  async getSimilarBeers(cat: string, rows: number) {
+    const items = await apiClient.get<RawRecords>(
+      '/api/records/1.0/search/?dataset=open-beer-database%40public-us&sort=ibu&fields=name,cat_name,cat_id,country,style_name,id,ibu,website&rows=' +
+        rows +
+        '&refine.cat_name=' +
+        cat
+    )
+    return this.toSimplifiedBeers(items.data)
+  },
+
   async getBeersByCategory(cat: string, rows: number) {
     const items = await apiClient.get<RawRecords>(
       '/api/records/1.0/search/?dataset=open-beer-database%40public-us&sort=ibu&fields=name,cat_name,cat_id,country,style_name,id,ibu,website&rows=' +
@@ -53,13 +72,13 @@ export default {
 
   //Methods to simplify the results
   //Meant to be imported in a vue and called after the promise was transformed
-  toSimplifiedBeers(rawRecords: RawRecords): Array<SimplifiedBeer> {
-    const result: Array<SimplifiedBeer> = []
+  toSimplifiedBeers(rawRecords: RawRecords): Array<SimplifiedBeerClass> {
+    const result = Array<SimplifiedBeerClass>()
     const records = rawRecords.records
     if (records) {
       for (let index = 0; index < records.length; index++) {
         const fields = records[index].fields
-        const simplifiedBeer: SimplifiedBeer = {
+        const simplifiedBeer: SimplifiedBeerClass = {
           name: fields.name,
           cat_name: fields.cat_name,
           cat_id: fields.cat_id,
@@ -75,8 +94,30 @@ export default {
     return result
   },
 
-  toSimplifiedCategories(rawData: Weather): Array<Category> {
-    const result: Array<Category> = []
+  toSimplifiedSingleBeer(rawRecords: RawRecords): SimplifiedBeerClass {
+    let result = new SimplifiedBeerClass()
+    const records = rawRecords.records
+    if (records) {
+      for (let index = 0; index < records.length; index++) {
+        const fields = records[index].fields
+        const mySimplifiedBeer: SimplifiedBeerClass = {
+          name: fields.name,
+          cat_name: fields.cat_name,
+          cat_id: fields.cat_id,
+          country: fields.country,
+          style_name: fields.style_name,
+          id: fields.id,
+          ibu: fields.ibu,
+          website: fields.website
+        }
+        result = mySimplifiedBeer
+      }
+    }
+    return result
+  },
+
+  toSimplifiedCategories(rawData: Weather): Array<CategoryClass> {
+    const result = Array<CategoryClass>()
     const facetGroups = rawData.facet_groups
     if (facetGroups) {
       for (let index = 0; index < facetGroups.length; index++) {
@@ -94,8 +135,4 @@ export default {
     }
     return result
   }
-
-  // transformCategoryName(rawName: string): string {
-  //   return rawName.replace(/\s/g, '+')
-  // }
 }

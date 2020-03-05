@@ -1,12 +1,24 @@
 <template>
-  <div class="item-box flex flex-center" @click="openCan()">
-    <img v-bind:src="this.getRandomImage()" v-bind:alt="$t('alt.image-beer')" />
+  <div class="item-box flex flex-center">
+    <button v-if="!displayDetails" class="clicker" @click="openCan()">
+      <img v-bind:src="this.getNextImage()" v-bind:alt="$t('alt.image-beer')" />
+    </button>
+
+    <img
+      v-if="displayDetails"
+      v-bind:src="this.getNextImage()"
+      v-bind:alt="$t('alt.image-beer')"
+    />
+
     <div class="description flex flex-center flex-column">
-      <h2>{{ item.name }}</h2>
-      <p>{{ item.cat_name }}</p>
-      <p>{{ item.country }}</p>
-      <p>{{ item.style_name }}</p>
-      <p>IBU: {{ item.ibu }}</p>
+      <h2>{{ beer.name }}</h2>
+      <p>{{ beer.cat_name }}</p>
+      <p>{{ beer.country }}</p>
+      <p>{{ beer.style_name }}</p>
+      <p>IBU: {{ beer.ibu }}</p>
+      <p v-if="displayDetails">{{ beer.city }}</p>
+      <p v-if="displayDetails">{{ beer.website }}</p>
+      <p v-if="displayDetails">ID: {{ beer.id }}</p>
     </div>
   </div>
 </template>
@@ -17,16 +29,26 @@ import Vue from 'vue'
 export default Vue.extend({
   name: 'item-box',
   props: {
-    item: {
+    beer: {
       type: Object
+    },
+    displayDetails: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
     openCan(): void {
       const audio = new Audio('http://bergamotte.tech/sounds/openingcan.mp3')
       audio.play()
+
+      const transformedName = this.beer.name.replace(/\s/g, '+')
+      this.$router.push({
+        name: this.$i18n.locale + '-details',
+        params: { beerId: this.beer.id, beerName: transformedName }
+      })
     },
-    getRandomImage(): string {
+    getNextImage(): string {
       const listOfImages: string[] = [
         'https://uploads-ssl.webflow.com/5c11655d98d64953510d3830/5c87f2063af90361ec6e78c9_21A-BrewFreeOrDie-12oz.png',
         'https://uploads-ssl.webflow.com/5c11655d98d64953510d3830/5c87e9e3b774e464f4203493_21A-BrewFreeBloodOrange-12oz.png',
@@ -39,7 +61,7 @@ export default Vue.extend({
         'https://uploads-ssl.webflow.com/5c11655d98d64953510d3830/5e27771504715a93a1be0816_21A-Peets-1966-CoffeeIPA-12oz-1.png',
         'https://uploads-ssl.webflow.com/5c11655d98d64953510d3830/5d927982c092fb4d31647359_21A-MonksBlood-12oz.png'
       ]
-      const item = listOfImages[Math.floor(Math.random() * listOfImages.length)]
+      const item = listOfImages[this.beer.id % listOfImages.length]
       return item
     }
   }
@@ -50,18 +72,18 @@ export default Vue.extend({
 .item-box {
   background-color: pink;
 }
+
 .item-box:nth-child(odd) {
   background-color: sandybrown;
 }
 
-.item-box:hover {
-  cursor: pointer;
+.item-box .clicker {
+  margin: 0 auto;
 }
 
 .item-box img {
   width: auto;
   display: block;
-  margin: 0 auto;
 }
 
 /* RESPONSIVE */
@@ -95,7 +117,7 @@ export default Vue.extend({
     overflow: hidden;
     width: 0;
     opacity: 0;
-    transition: width linear 0.3s, opacity ease-in 0.1s;
+    transition: width linear 0.3s 0.2s, opacity linear 0.2s;
   }
 
   .item-box img {
@@ -107,7 +129,7 @@ export default Vue.extend({
   .item-box:hover .description {
     width: 100%;
     opacity: 1;
-    transition: width linear 0.4s, opacity ease-out 0.2s 0.2s;
+    transition: width linear 0.4s, opacity ease-out 0.2s 0.4s;
   }
   .item-box:hover img {
     transform: rotate(-10deg);

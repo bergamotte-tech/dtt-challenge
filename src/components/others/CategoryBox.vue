@@ -1,14 +1,14 @@
 <template>
   <div
     class="category-box flex flex-center"
-    @click="goToCategory(item.cat_name)"
+    @click="goToCategory(category.cat_name)"
   >
     <img
       src="https://kwc.ge/wp-content/uploads/2017/09/7c4486a1ffc963faa4416cb846ade68c.png"
       v-bind:alt="$t('alt.image-barrel')"
     />
     <div class="description flex flex-center flex-column">
-      <h2>{{ item.cat_name }}</h2>
+      <h2>{{ category.cat_name }}</h2>
     </div>
   </div>
 </template>
@@ -19,7 +19,7 @@ import Vue from 'vue'
 export default Vue.extend({
   name: 'category-box',
   props: {
-    item: {
+    category: {
       type: Object
     }
   },

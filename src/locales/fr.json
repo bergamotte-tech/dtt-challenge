@@ -2,16 +2,16 @@
   "components": {
     "navtop": {
       "navbar": {
-        "title-home": "Maison",
-        "title-categories": "Catégories",
-        "title-random": "Aléatoire",
+        "title-home": "Home",
+        "title-categories": "Categories",
+        "title-random": "Random",
         "title-menu": "Menu",
-        "title-hide": "Cacher"
+        "title-hide": "Hide"
       }
     },
     "navbottom": {
       "email": {
-        "title": "Titre email"
+        "title": "Title email"
       },
       "footer": {
         "title": "Title footer"
@@ -39,36 +39,41 @@
     },
 
     "age-verification": {
-      "title": "Êtes-vous en âge de consommer de l'alcool ?"
+      "title": "Are you of legal drinking age ?"
     },
 
     "categories": {
-      "title": "Titre categories"
+      "title": "Categories"
+    },
+    "categories-details": {
+      "title": "Category"
     },
 
     "details": {
-      "title": "Titre details"
+      "title": "Details"
     },
 
     "home": {
-      "title": "Accueil",
-      "on-tap": "Bières du moment",
-      "thirsty": "Encore soif ?"
+      "title": "Home",
+      "on-tap": "Beers on tap",
+      "thirsty": "Still thirsty ?"
     },
 
     "random": {
-      "title": "Titre random"
+      "title": "Random"
     }
   },
 
   "alt": {
-    "image-beer": "Image d'une canette de bière",
-    "image-juice": "Image d'une canette de jus"
+    "image-beer": "Image of a beer can",
+    "image-juice": "Image of a juice can",
+    "image-barrel": "Image of a wooden beer barrel",
+    "logo": "Logo of the website, representig a beer can in black and white"
   },
 
   "buttons": {
-    "yes": "Oui",
-    "no": "Non",
-    "submit": "Valider"
+    "yes": "Yes",
+    "no": "No",
+    "submit": "Submit"
   }
 }

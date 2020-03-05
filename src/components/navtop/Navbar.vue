@@ -2,7 +2,7 @@
   <div id="nav" class="flex">
     <div class="nav-wrapper flex" id="menuHidden">
       <div class="logo-language-wrapper flex flex-row flex-center">
-        <p>LOGO</p>
+        <img src="@/assets/images/Logo.png" v-bind:alt="$t('alt.logo')" />
         <language-selection></language-selection>
       </div>
 
@@ -122,6 +122,19 @@ export default Vue.extend({
 
 .route {
   margin: 0 1rem;
+}
+
+.logo-language-wrapper {
+  padding: 1rem;
+}
+
+.logo-language-wrapper * {
+  margin: 1rem;
+}
+
+.logo-language-wrapper img {
+  height: 90%;
+  width: auto;
 }
 
 /* RESPONSIVE */

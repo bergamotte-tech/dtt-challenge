@@ -30,8 +30,8 @@
     <h2>{{ $t('views.home.on-tap') }}:</h2>
 
     <div class="items-wrapper flex flex-center">
-      <loader v-if="beers.length < 1"> </loader>
-      <item-box v-for="item in beers" :key="item.id" :item="item"></item-box>
+      <loader v-if="topBeers.length < 1"> </loader>
+      <item-box v-for="beer in topBeers" :key="beer.id" :beer="beer"></item-box>
     </div>
 
     <h2>{{ $t('views.home.thirsty') }}:</h2>
@@ -43,7 +43,7 @@
 import Vue from 'vue'
 import ItemBox from '@/components/others/ItemBox.vue'
 import ButtonCategories from '@/components/others/ButtonCategories.vue'
-import { SimplifiedBeer } from '@/data/BeerInterface'
+import { SimplifiedBeerClass } from '@/data/BeerInterface'
 import BeerService from '@/data/BeerService'
 import Loader from '@/components/others/Loader.vue'
 
@@ -56,11 +56,11 @@ export default Vue.extend({
   },
   data() {
     return {
-      beers: Array<SimplifiedBeer>()
+      topBeers: Array<SimplifiedBeerClass>()
     }
   },
   created(): void {
-    BeerService.getBeers(10).then(beers => (this.beers = beers))
+    BeerService.getBeers(10).then(beers => (this.topBeers = beers))
   }
 })
 </script>
@@ -127,10 +127,6 @@ export default Vue.extend({
   height: 100%;
   width: unset;
   display: block; /* remove extra space below image */
-}
-
-.beer-shape:hover {
-  cursor: pointer;
 }
 
 .introduction-speech h3 {

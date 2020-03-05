@@ -49,7 +49,7 @@
       "title": "Category"
     },
 
-    "details": {
+    "beer-details": {
       "title": "Details"
     },
 
@@ -67,7 +67,8 @@
   "alt": {
     "image-beer": "Image of a beer can",
     "image-juice": "Image of a juice can",
-    "image-barrel": "Image of a wooden beer barrel"
+    "image-barrel": "Image of a wooden beer barrel",
+    "logo": "Logo of the website, representig a beer can in black and white"
   },
 
   "buttons": {
