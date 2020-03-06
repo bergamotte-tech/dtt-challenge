@@ -1,28 +1,36 @@
 <template>
   <div id="age-verification" class="age-verification">
-    <div class="menu">
+    <div class="language">
       <language-selection></language-selection>
     </div>
-    <div class="flex flex-column flex-center">
-      <h1>{{ $t('views.age-verification.title') }}</h1>
-      <div class="choices-wrapper flex flex-center flex-row">
+    <div class="padding-view content-wrapper flex flex-column flex-center">
+      <h2>{{ $t('views.age-verification.title') }}</h2>
+      <div class="choices-wrapper flex flex-center">
         <div class="choice flex flex-column">
           <img
             src="https://uploads-ssl.webflow.com/5c11655d98d64953510d3830/5c893a6a4793fa2a05a455a5_21A-ElSully-12oz.png"
             v-bind:alt="$t('alt.image-beer')"
           />
-          <button @click="setIsLegalAge('true')">
+          <button @click="setIsUnderAge('false')">
             {{ $t('buttons.yes') }}
           </button>
         </div>
-        <div class="choice flex flex-column">
+
+        <div v-if="!isUnderage" class="choice flex flex-column">
           <img
             src="https://uploads-ssl.webflow.com/5c11655d98d64953510d3830/5e27771504715a93a1be0816_21A-Peets-1966-CoffeeIPA-12oz-1.png"
             v-bind:alt="$t('alt.image-juice')"
           />
-          <button @click="setIsLegalAge('false')">
+          <button @click="setIsUnderAge('true')">
             {{ $t('buttons.no') }}
           </button>
+        </div>
+
+        <div v-if="isUnderage" class="choice">
+          <p>
+            It's ok, cheer up and wait to get older ! You might as well visit
+            <a href="">DTT's website</a> while you're here !
+          </p>
         </div>
       </div>
     </div>
@@ -38,29 +46,41 @@ export default Vue.extend({
   components: {
     LanguageSelection
   },
+  data() {
+    return {
+      isUnderage: true
+    }
+  },
   methods: {
-    setIsLegalAge(strBool: string): void {
-      localStorage.setItem('isLegalAge', strBool)
-      this.displayComponent(strBool === 'false')
+    setIsUnderAge(strBool: string): void {
+      if (strBool === 'true') this.isUnderage = true
+      else this.isUnderage = false
+      localStorage.setItem('isUnderage', strBool)
+      this.displayComponent(this.isUnderage)
+      console.log(this.isUnderage)
     },
     displayComponent(isUnderage: boolean): void {
       const target = document.getElementById('age-verification')
       if (target != null) {
-        if (isUnderage) target.style.display = 'block'
-        else target.style.display = 'none'
+        if (isUnderage) {
+          target.style.display = 'block'
+        } else target.style.display = 'block'
       }
     }
   },
-
   mounted(): void {
-    localStorage.getItem('isLegalAge') === 'false'
-      ? this.displayComponent(true)
-      : this.displayComponent(false)
+    localStorage.getItem('isUnderage') == 'true'
+      ? (this.isUnderage = true)
+      : (this.isUnderage = false)
   }
 })
 </script>
 
 <style scoped>
+.content-wrapper {
+  padding-top: 3rem;
+}
+
 .age-verification {
   position: fixed;
   z-index: 2000;
@@ -76,11 +96,11 @@ export default Vue.extend({
   position: relative;
 }
 
-.menu {
+.language {
   position: absolute !important;
   z-index: 10;
-  top: 4rem;
-  left: 5rem;
+  top: 1rem;
+  left: 1rem;
 }
 
 .choice button {
@@ -96,10 +116,12 @@ export default Vue.extend({
   padding: 0.5em 1em;
   outline: none;
   border: none;
+  border-radius: 0.3rem;
   background-color: var(--bgrd-primary);
 }
 .choice button::before {
   content: '';
+  border-radius: 0.3rem;
   z-index: -1;
   position: absolute;
   top: 0;
@@ -119,8 +141,24 @@ export default Vue.extend({
   transform: scaleX(1);
 }
 
-.choice img {
-  height: 70vh;
-  width: auto;
+@media screen and (min-width: 0px) {
+  .choice img {
+    height: 40vh;
+    width: auto;
+  }
+
+  .choices-wrapper {
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 900px) {
+  .choice img {
+    height: 70vh;
+    width: auto;
+  }
+
+  .choices-wrapper {
+    flex-direction: row;
+  }
 }
 </style>

@@ -2,7 +2,11 @@
   <div id="nav" class="flex">
     <div class="nav-wrapper flex" id="menuHidden">
       <div class="logo-language-wrapper flex flex-row flex-center">
-        <img src="@/assets/images/Logo.png" v-bind:alt="$t('alt.logo')" />
+        <img
+          src="@/assets/images/Logo.png"
+          v-bind:alt="$t('alt.logo')"
+          @click="goToHome()"
+        />
         <language-selection></language-selection>
       </div>
 
@@ -99,6 +103,9 @@ export default Vue.extend({
       this.hideMenu(true)
       hamburgerIsOpen = true
       this.hamburgerClicked()
+    },
+    goToHome(): void {
+      this.$router.push({ name: this.$i18n.locale + '-home' })
     }
   },
   watch: {
@@ -117,7 +124,7 @@ export default Vue.extend({
   position: fixed;
   z-index: 800;
   width: 100%;
-  background-color: chocolate;
+  padding: 0;
 }
 
 .route {
@@ -159,6 +166,7 @@ export default Vue.extend({
     justify-content: flex-start;
     align-items: center;
     height: 100%;
+    background-color: var(--bgrd-secondary);
   }
 
   .logo-language-wrapper {
@@ -196,6 +204,7 @@ export default Vue.extend({
     justify-content: flex-start;
     align-items: center;
     height: 5rem;
+    background-color: var(--nav-background-desktop);
   }
 
   .logo-language-wrapper {

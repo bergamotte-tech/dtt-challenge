@@ -57,7 +57,8 @@ export default Vue.extend({
   --text-primary: #ffffff;
   --text-secondary: #ff671b;
   --bgrd-primary: #191919;
-  --bgrd-secondary: #f9f9f9;
+  --bgrd-secondary: #ff671b;
+  --nav-background-desktop: rgb(150, 10, 30);
 }
 
 ::selection,
@@ -167,6 +168,10 @@ h6,
   font-family: 'Noticia Text', serif;
 }
 
+h3 {
+  margin: 1rem 0;
+}
+
 /* RESPONSIVE */
 @media screen and (min-width: 0px) {
   h1 {
@@ -218,7 +223,7 @@ h6,
     font-size: 2vw;
   }
   a {
-    font-size: 4vw;
+    font-size: 3vw;
   }
 }
 
@@ -289,6 +294,43 @@ textarea {
 button {
   border-radius: 5px;
   padding: 0.5rem;
+}
+/* Reset Select */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background: var(--bgrd-primary);
+  background-image: none;
+}
+/* Remove IE arrow */
+select::-ms-expand {
+  display: none;
+}
+/* Custom Select */
+select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+  line-height: 2.2;
+  background: var(--bgrd-primary) !important;
+  overflow: hidden;
+  border-radius: 0.25rem;
+}
+select {
+  padding: 0 0.5rem;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+select * {
+  text-transform: uppercase;
+  background-color: inherit;
 }
 button,
 input {

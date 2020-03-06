@@ -42,6 +42,10 @@ export default Vue.extend({
   margin-bottom: 2rem;
 }
 
+#footerbar {
+  padding: 2rem 1rem;
+}
+
 .routes-wrapper {
   height: auto;
   width: auto;
@@ -49,5 +53,6 @@ export default Vue.extend({
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: 30% 30% 30%;
+  background-color: tomato;
 }
 </style>
