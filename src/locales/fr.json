@@ -11,7 +11,7 @@
       "footer": {
         "title-credits": "Crédits et remerciements",
         "title-sitemap": "Sitemap complète",
-        "text": "The Big Brewery est un site web fictif développé dans le cadre d'un test pour l'entreprise \"DTT\" (Amsterdam), tous droits réservés. Les images de canettes de bière proviennent de \"21stamendment.com\", dont les employés ont aimablement autorisé l'utilisation pour ce projet. L'API publique fournissant les données est https://data.opendatasoft.com/explore/dataset/open-beer-database%40public-us. Notez que les données de l'API N'ONT AUCUN RAPPORT avec les images, servant simplement d'exemples."
+        "text": "The Big Brewery est un site web fictif développé dans le cadre d'un test pour l'entreprise \"DTT\" (Amsterdam), tous droits réservés. Les images de canettes de bière proviennent de \"https://www.21st-amendment.com/\", dont les employés ont aimablement autorisé l'utilisation pour ce projet. L'API publique fournissant les données est https://data.opendatasoft.com/explore/dataset/open-beer-database%40public-us. Notez que les données de l'API N'ONT AUCUN RAPPORT avec les images, servant simplement d'exemples."
       }
     },
     "other": {
