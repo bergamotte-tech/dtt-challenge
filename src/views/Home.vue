@@ -30,18 +30,35 @@
       </div>
     </div>
     <h2 id="onTapAnchor">{{ $t('views.home.on-tap') }}:</h2>
+    <div class="filters flex flex-center flex-row">
+      <h2>Sort :</h2>
+      <select id="sort">
+        <option> </option>
+        <option @click="sortNameAsc()">Name asc</option>
+        <option @click="sortNameDesc()">Name desc</option>
+        <option @click="sortIBUAsc()">IBU asc</option>
+        <option @click="sortIBUDesc()">IBU desc</option>
+      </select>
+      <h2 id="filter-label">OR filter :</h2>
+      <input
+        id="filter"
+        v-model="filterText"
+        type="text"
+        v-bind:placeholder="$t('placeholder.filter-name')"
+      />
+    </div>
 
-    <div class="items-wrapper flex flex-center">
+    <div class="items-wrapper flex">
       <loader v-if="topBeers.length < 1"> </loader>
       <item-box
-        v-for="beer in topBeers"
+        v-for="beer in filteredBeers"
         :key="beer.id"
         :beer="beer"
         class="home-display"
       ></item-box>
     </div>
 
-    <h2 class="question">
+    <h2 class="question flex flex-center">
       {{ $t('views.home.thirsty') }}
       <a @click="goToCategories()"> Grab a random beer ! </a>
     </h2>
@@ -63,7 +80,8 @@ export default Vue.extend({
   },
   data() {
     return {
-      topBeers: Array<SimplifiedBeerClass>()
+      topBeers: Array<SimplifiedBeerClass>(),
+      filterText: ''
     }
   },
   methods: {
@@ -76,6 +94,32 @@ export default Vue.extend({
     },
     goToRandom(): void {
       this.$router.push({ name: this.$i18n.locale + '-random' })
+    },
+    sortIBUAsc(): void {
+      this.topBeers.sort((a: SimplifiedBeerClass, b: SimplifiedBeerClass) =>
+        a.ibu > b.ibu ? 1 : -1
+      )
+    },
+    sortIBUDesc(): void {
+      this.topBeers.sort((a: SimplifiedBeerClass, b: SimplifiedBeerClass) =>
+        a.ibu < b.ibu ? 1 : -1
+      )
+    },
+    sortNameAsc(): void {
+      this.topBeers.sort((a: SimplifiedBeerClass, b: SimplifiedBeerClass) =>
+        a.name.localeCompare(b.name, this.$i18n.locale, { sensitivity: 'base' })
+      )
+    },
+    sortNameDesc(): void {
+      this.topBeers.sort((a: SimplifiedBeerClass, b: SimplifiedBeerClass) =>
+        b.name.localeCompare(a.name, this.$i18n.locale, { sensitivity: 'base' })
+      )
+    }
+  },
+  computed: {
+    filteredBeers(): SimplifiedBeerClass[] {
+      const filter = new RegExp(this.filterText, 'i')
+      return this.topBeers.filter(el => el.name.match(filter))
     }
   },
   created(): void {
@@ -91,7 +135,29 @@ export default Vue.extend({
   min-height: 100%;
 }
 
+.filters {
+  justify-content: flex-start;
+  margin: 1rem 0 1rem 0;
+}
+
+#sort {
+  transform: scale(1.4);
+  margin: 0 1rem 0 1rem;
+}
+
+#filter-label {
+  margin-left: 1rem;
+}
+
+#filter {
+  max-width: 35%;
+  margin: 0 auto 0 1rem;
+}
+
 .question {
+  margin: 2rem 0 0 0;
+  align-items: flex-end;
+  justify-content: space-around;
   white-space: nowrap;
 }
 
@@ -241,6 +307,13 @@ export default Vue.extend({
 /* RESPONSIVE */
 
 @media screen and (min-width: 0px) {
+  #filter {
+    display: none;
+  }
+  #filter-label {
+    display: none;
+  }
+
   .beer-shape {
     height: 200px;
     width: 100px;
@@ -259,6 +332,13 @@ export default Vue.extend({
 }
 
 @media screen and (min-width: 650px) {
+  #filter {
+    display: flex;
+  }
+  #filter-label {
+    display: inline-block;
+  }
+
   .beer-shape {
     height: 400px;
     width: 200px;

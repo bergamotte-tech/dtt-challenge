@@ -48,24 +48,20 @@ export default Vue.extend({
 
 :root {
   font-size: 16px;
-  --beer-blue: #04d9d9;
-  --beer-green: #02734a;
-  --beer-yellow: #f2d338;
-  --beer-orange: #f25c05;
-  --beer-red: #f23838;
 
+  --background-primary: #090a0d;
+  --background-secondary: #f28705;
+  --background-third: #f2d6bd;
   --text-primary: #ffffff;
-  --text-secondary: #ff671b;
-  --bgrd-primary: #191919;
-  --bgrd-secondary: #ff671b;
-  --nav-background-desktop: rgb(150, 10, 30);
+  --text-secondary: #f25c05;
+  --nav-background: #a6633c;
 }
 
 ::selection,
 ::-moz-selection,
 ::-webkit-selection {
   color: var(--text-secondary);
-  background-color: var(--bgrd-primary);
+  background-color: var(--background-primary);
 }
 
 ::-webkit-scrollbar {
@@ -76,7 +72,7 @@ export default Vue.extend({
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bgrd-secondary);
+  background: var(--background-secondary);
 }
 
 * {
@@ -92,7 +88,7 @@ html {
 
 body {
   scrollbar-face-color: var(--text-secondary);
-  scrollbar-track-color: var(--bgrd-secondary);
+  scrollbar-track-color: var(--background-secondary);
 }
 
 #app {
@@ -107,7 +103,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
 
-  background-color: var(--bgrd-primary);
+  background-color: var(--background-primary);
   color: var(--text-primary);
 }
 
@@ -286,7 +282,9 @@ input,
 optgroup,
 select,
 textarea {
-  display: inline-flex;
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+  outline-color: var(--text-primary);
   font-size: 100%;
   line-height: 1.15;
   margin: 0;
@@ -304,7 +302,7 @@ select {
   outline: 0;
   box-shadow: none;
   border: 0 !important;
-  background: var(--bgrd-primary);
+  background: var(--background-primary);
   background-image: none;
 }
 /* Remove IE arrow */
@@ -319,7 +317,7 @@ select {
   width: auto;
   height: auto;
   line-height: 2.2;
-  background: var(--bgrd-primary) !important;
+  background: var(--background-primary) !important;
   overflow: hidden;
   border-radius: 0.25rem;
 }

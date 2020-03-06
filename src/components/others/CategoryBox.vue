@@ -36,10 +36,11 @@ export default Vue.extend({
   height: 100%;
   padding: 0.5rem 0;
   border-radius: 0.3rem;
-  background-color: pink;
+  background-color: var(--background-primary);
 }
+
 .category-box:nth-child(odd) {
-  background-color: sandybrown;
+  background-color: var(--background-primary);
 }
 
 .category-box:hover {

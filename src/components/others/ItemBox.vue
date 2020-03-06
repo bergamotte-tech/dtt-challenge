@@ -146,6 +146,10 @@ export default Vue.extend({
   .item-box img {
     transform: rotate(-10deg);
   }
+
+  .item-box img:hover {
+    cursor: pointer;
+  }
 }
 
 @media screen and (min-width: 300px) {

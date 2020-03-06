@@ -1,10 +1,11 @@
 <template>
-  <div class="language-selection">
-    <select class="">
+  <div id="language-selection">
+    <select id="selector">
       <option
         v-for="(lang, index) in languages"
         :key="index"
         @click="setLocale(lang)"
+        :value="lang"
         >{{ lang }}</option
       >
     </select>
@@ -18,7 +19,7 @@ export default Vue.extend({
   name: 'language-selection',
   data() {
     return {
-      languages: this.$root.$i18n.availableLocales
+      languages: Array<string>()
     }
   },
   methods: {
@@ -36,8 +37,25 @@ export default Vue.extend({
         })
         .catch(err => err)
     }
+  },
+  mounted(): void {
+    ;(this.languages = this.$root.$i18n.availableLocales),
+      ((document.getElementById(
+        'selector'
+      ) as HTMLSelectElement).value = this.$i18n.locale)
+  },
+  watch: {
+    $route() {
+      ;(document.getElementById(
+        'selector'
+      ) as HTMLSelectElement).value = this.$root.$i18n.locale
+    }
   }
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+#language-selection {
+  transform: scale(1.2);
+}
+</style>

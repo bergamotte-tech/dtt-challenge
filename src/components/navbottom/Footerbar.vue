@@ -53,6 +53,7 @@ export default Vue.extend({
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: 30% 30% 30%;
+  border-radius: 5px;
   background-color: tomato;
 }
 </style>

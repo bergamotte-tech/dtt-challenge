@@ -73,6 +73,10 @@
     "logo": "Logo of the website, representig a beer can in black and white"
   },
 
+  "placeholder": {
+    "filter-name": "Filter by name here"
+  },
+
   "buttons": {
     "yes": "Yes",
     "no": "No",

@@ -29,7 +29,8 @@
         <div v-if="isUnderage" class="choice">
           <p>
             It's ok, cheer up and wait to get older ! You might as well visit
-            <a href="">DTT's website</a> while you're here !
+            <a href="https://www.en.d-tt.nl/" target="_blank">DTT's website</a>
+            while you're here !
           </p>
         </div>
       </div>
@@ -57,21 +58,21 @@ export default Vue.extend({
       else this.isUnderage = false
       localStorage.setItem('isUnderage', strBool)
       this.displayComponent(this.isUnderage)
-      console.log(this.isUnderage)
     },
     displayComponent(isUnderage: boolean): void {
       const target = document.getElementById('age-verification')
       if (target != null) {
         if (isUnderage) {
           target.style.display = 'block'
-        } else target.style.display = 'block'
+        } else target.style.display = 'none'
       }
     }
   },
   mounted(): void {
-    localStorage.getItem('isUnderage') == 'true'
-      ? (this.isUnderage = true)
-      : (this.isUnderage = false)
+    if (localStorage.getItem('isUnderage') == 'true') {
+      this.isUnderage = true
+      //not affecting the display for demonstration purposes : every page refresh will display this AgeVerification vue
+    } else this.isUnderage = false
   }
 })
 </script>
@@ -79,6 +80,10 @@ export default Vue.extend({
 <style scoped>
 .content-wrapper {
   padding-top: 3rem;
+}
+
+a {
+  text-decoration: underline var(--text-primary);
 }
 
 .age-verification {
@@ -117,7 +122,7 @@ export default Vue.extend({
   outline: none;
   border: none;
   border-radius: 0.3rem;
-  background-color: var(--bgrd-primary);
+  background-color: var(--background-primary);
 }
 .choice button::before {
   content: '';

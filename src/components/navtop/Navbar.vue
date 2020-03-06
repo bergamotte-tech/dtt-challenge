@@ -131,6 +131,10 @@ export default Vue.extend({
   margin: 0 1rem;
 }
 
+img:hover {
+  cursor: pointer;
+}
+
 .logo-language-wrapper {
   padding: 1rem;
 }
@@ -147,7 +151,7 @@ export default Vue.extend({
 /* RESPONSIVE */
 @media screen and (min-width: 0px) {
   .hamburger {
-    background-color: crimson;
+    background-color: var(--background-secondary);
     z-index: 801;
     position: fixed;
     bottom: 4vh;
@@ -166,13 +170,13 @@ export default Vue.extend({
     justify-content: flex-start;
     align-items: center;
     height: 100%;
-    background-color: var(--bgrd-secondary);
+    background-color: var(--background-secondary);
   }
 
   .logo-language-wrapper {
     width: 100%;
     height: 5rem;
-    background-color: aqua;
+    background-color: var(--background-third);
   }
   .logo-language-wrapper .language-selection {
     margin: 0 0 0 auto;
@@ -204,7 +208,7 @@ export default Vue.extend({
     justify-content: flex-start;
     align-items: center;
     height: 5rem;
-    background-color: var(--nav-background-desktop);
+    background-color: var(--background-primary);
   }
 
   .logo-language-wrapper {
