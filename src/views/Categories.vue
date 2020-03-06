@@ -42,12 +42,16 @@ export default Vue.extend({
 /* GENERAL */
 
 #categories {
-  background-color: blueviolet;
+  background-color: var(--background-primary);
   height: auto;
 }
 
 #categories * {
   position: relative;
+}
+
+#categories h1 {
+  margin-bottom: 2rem;
 }
 
 .items-wrapper {

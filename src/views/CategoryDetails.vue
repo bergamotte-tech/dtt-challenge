@@ -63,6 +63,6 @@ export default Vue.extend({
 
 <style scoped>
 #category-details {
-  background-color: darkviolet;
+  background-color: var(--background-primary);
 }
 </style>

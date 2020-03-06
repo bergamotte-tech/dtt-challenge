@@ -36,11 +36,11 @@ export default Vue.extend({
   height: 100%;
   padding: 0.5rem 0;
   border-radius: 0.3rem;
-  background-color: var(--background-primary);
+  background-color: var(--button-primary);
 }
 
 .category-box:nth-child(odd) {
-  background-color: var(--background-primary);
+  background-color: var(--button-primary);
 }
 
 .category-box:hover {

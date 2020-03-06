@@ -95,6 +95,28 @@ export default Vue.extend({
   height: 95%;
 }
 
+.color-line {
+  position: absolute;
+  margin: auto;
+  z-index: 1;
+  background-color: var(--text-secondary);
+
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.item-box:nth-child(odd) .color-line {
+  background-color: var(--button-primary);
+}
+
+.description * {
+  color: var(--background-primary);
+}
+
+.item-box:nth-child(odd) .description * {
+  color: var(--text-secondary);
+}
+
 .details img {
   transform: rotate(-10deg);
 }
@@ -113,16 +135,6 @@ export default Vue.extend({
 
 .similar-display .similar-display-name {
   display: block;
-}
-
-.color-line {
-  position: absolute;
-  margin: auto;
-  z-index: 1;
-  background-color: pink;
-
-  width: 100%;
-  box-sizing: border-box;
 }
 
 .similar-display {

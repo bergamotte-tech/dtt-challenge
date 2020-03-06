@@ -49,46 +49,44 @@ export default Vue.extend({
 :root {
   font-size: 16px;
 
-  --background-primary: #090a0d;
+  --background-primary: #080808;
   --background-secondary: #f28705;
-  --background-third: #f2d6bd;
-  --text-primary: #ffffff;
-  --text-secondary: #f25c05;
-  --nav-background: #a6633c;
+  --background-third: #000000;
+  --text-primary: #e8e8e8;
+  --text-secondary: #fad91f;
+  --text-third: #f25c05;
+  --button-primary: #333333;
 }
 
 ::selection,
 ::-moz-selection,
 ::-webkit-selection {
-  color: var(--text-secondary);
-  background-color: var(--background-primary);
+  color: var(--background-primary);
+  background-color: var(--text-secondary);
 }
 
 ::-webkit-scrollbar {
   width: 0.25rem;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--text-secondary);
+  color: var(--background-primary);
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background-secondary);
+  background-color: var(--text-secondary);
 }
 
 * {
   margin: 0;
   padding: 0;
   position: relative;
+  scrollbar-face-color: var(--background-primary);
+  scrollbar-track-color: var(--text-secondary);
 }
 
 html {
   width: 100%;
   min-height: 100%;
-}
-
-body {
-  scrollbar-face-color: var(--text-secondary);
-  scrollbar-track-color: var(--background-secondary);
 }
 
 #app {
@@ -162,6 +160,7 @@ h6,
   justify-content: flex-start;
   align-items: center;
   font-family: 'Noticia Text', serif;
+  color: var(--text-secondary);
 }
 
 h3 {
@@ -187,24 +186,6 @@ h3 {
   }
 }
 
-/* @media screen and (min-width: 300px) {
-  h1 {
-    font-size: 50px;
-  }
-  h2 {
-    font-size: 25px;
-  }
-  h3 {
-    font-size: 22px;
-  }
-  p {
-    font-size: 16px;
-  }
-  a {
-    font-size: 34px;
-  }
-} */
-
 @media screen and (min-width: 650px) {
   h1 {
     font-size: 8.5vw;
@@ -222,24 +203,6 @@ h3 {
     font-size: 3vw;
   }
 }
-
-/* @media screen and (min-width: 900px) {
-  h1 {
-    font-size: 90px;
-  }
-  h2 {
-    font-size: 38px;
-  }
-  h3 {
-    font-size: 28px;
-  }
-  p {
-    font-size: 24px;
-  }
-  a {
-    font-size: 40px;
-  }
-} */
 
 @media screen and (min-width: 0px) {
   .padding-view {
@@ -271,7 +234,7 @@ small {
   font-size: 80%;
 }
 .-text-error {
-  color: tomato;
+  color: var(--text-third);
 }
 .-shadow {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.13);
@@ -282,10 +245,11 @@ input,
 optgroup,
 select,
 textarea {
-  background-color: var(--background-primary);
+  background-color: var(--button-primary);
   color: var(--text-primary);
-  outline-color: var(--text-primary);
-  font-size: 100%;
+  outline-color: var(--text-secondary);
+  border-radius: 0.25rem;
+  font-size: 160%;
   line-height: 1.15;
   margin: 0;
 }
@@ -299,32 +263,27 @@ select {
   -moz-appearance: none;
   -ms-appearance: none;
   appearance: none;
-  outline: 0;
   box-shadow: none;
-  border: 0 !important;
-  background: var(--background-primary);
+  outline: 0;
+  background: var(--button-primary) !important;
+  border-color: transparent !important;
+  color: var(--text-primary);
   background-image: none;
-}
-/* Remove IE arrow */
-select::-ms-expand {
-  display: none;
-}
-/* Custom Select */
-select {
   display: flex;
   justify-content: center;
   align-items: center;
   width: auto;
   height: auto;
   line-height: 2.2;
-  background: var(--background-primary) !important;
-  overflow: hidden;
-  border-radius: 0.25rem;
-}
-select {
   padding: 0 0.5rem;
-  color: var(--text-primary);
   cursor: pointer;
+}
+select:focus {
+  border-color: var(--text-secondary) !important;
+}
+/* Remove IE arrow */
+select::-ms-expand {
+  display: none;
 }
 select * {
   text-transform: uppercase;
@@ -333,10 +292,6 @@ select * {
 button,
 input {
   overflow: visible;
-}
-button,
-select {
-  text-transform: none;
 }
 button:hover {
   cursor: pointer;

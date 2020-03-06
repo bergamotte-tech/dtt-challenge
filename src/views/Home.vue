@@ -31,15 +31,15 @@
     </div>
     <h2 id="onTapAnchor">{{ $t('views.home.on-tap') }}:</h2>
     <div class="filters flex flex-center flex-row">
-      <h2>Sort :</h2>
+      <h3 class="option-label">Sort :</h3>
       <select id="sort">
-        <option> </option>
+        <option>- - - - - -</option>
         <option @click="sortNameAsc()">Name asc</option>
         <option @click="sortNameDesc()">Name desc</option>
         <option @click="sortIBUAsc()">IBU asc</option>
         <option @click="sortIBUDesc()">IBU desc</option>
       </select>
-      <h2 id="filter-label">OR filter :</h2>
+      <h3 class="option-label filter-label">OR filter :</h3>
       <input
         id="filter"
         v-model="filterText"
@@ -131,7 +131,7 @@ export default Vue.extend({
 <style scoped>
 /* GENERAL */
 #home {
-  background-color: blueviolet;
+  background-color: var(--background-primary);
   min-height: 100%;
 }
 
@@ -140,18 +140,13 @@ export default Vue.extend({
   margin: 1rem 0 1rem 0;
 }
 
-#sort {
-  transform: scale(1.4);
-  margin: 0 1rem 0 1rem;
-}
-
-#filter-label {
-  margin-left: 1rem;
-}
-
 #filter {
   max-width: 35%;
   margin: 0 auto 0 1rem;
+}
+
+.option-label {
+  margin: 0 1rem;
 }
 
 .question {
@@ -176,7 +171,7 @@ export default Vue.extend({
   line-height: 0;
   white-space: nowrap;
   padding: 0.2rem;
-  background-color: black;
+  background-color: var(--text-secondary);
 
   top: 50%;
   left: 100%;
@@ -196,6 +191,10 @@ export default Vue.extend({
   100% {
     top: 55%;
   }
+}
+
+.text-scroll * {
+  color: var(--background-primary);
 }
 
 .text-scroll:hover {
@@ -307,10 +306,14 @@ export default Vue.extend({
 /* RESPONSIVE */
 
 @media screen and (min-width: 0px) {
+  #sort {
+    margin: 0 1rem 0 1rem;
+  }
+
   #filter {
     display: none;
   }
-  #filter-label {
+  .filter-label {
     display: none;
   }
 
@@ -332,13 +335,6 @@ export default Vue.extend({
 }
 
 @media screen and (min-width: 650px) {
-  #filter {
-    display: flex;
-  }
-  #filter-label {
-    display: inline-block;
-  }
-
   .beer-shape {
     height: 400px;
     width: 200px;
@@ -346,6 +342,13 @@ export default Vue.extend({
 }
 
 @media screen and (min-width: 900px) {
+  #filter {
+    display: flex;
+  }
+  .filter-label {
+    display: block;
+  }
+
   .beer-shape {
     height: 600px;
     width: 300px;

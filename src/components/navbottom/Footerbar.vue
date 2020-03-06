@@ -1,5 +1,5 @@
 <template>
-  <div id="footerbar">
+  <div id="footerbar" class="padding-view">
     <h3>{{ $t('components.navbottom.footer.title-credits') }}:</h3>
     <p>
       Credits here Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -42,10 +42,6 @@ export default Vue.extend({
   margin-bottom: 2rem;
 }
 
-#footerbar {
-  padding: 2rem 1rem;
-}
-
 .routes-wrapper {
   height: auto;
   width: auto;
@@ -54,6 +50,6 @@ export default Vue.extend({
   grid-gap: 1rem;
   grid-template-columns: 30% 30% 30%;
   border-radius: 5px;
-  background-color: tomato;
+  background-color: var(--button-primary);
 }
 </style>

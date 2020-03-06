@@ -20,7 +20,7 @@ export default Vue.extend({
 
 <style scoped>
 #error-404 {
-  background-color: darkviolet;
-  min-height: 100vh;
+  background-color: var(--background-primary);
+  min-height: 70vh;
 }
 </style>

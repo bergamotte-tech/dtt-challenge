@@ -1,8 +1,6 @@
 <template>
   <div id="age-verification" class="age-verification">
-    <div class="language">
-      <language-selection></language-selection>
-    </div>
+    <div class="language"></div>
     <div class="padding-view content-wrapper flex flex-column flex-center">
       <h2>{{ $t('views.age-verification.title') }}</h2>
       <div class="choices-wrapper flex flex-center">
@@ -91,7 +89,7 @@ a {
   z-index: 2000;
   width: 100%;
   height: 100%;
-  background-color: blueviolet;
+  background-color: var(--background-primary);
   overflow: hidden;
 
   justify-content: space-around;

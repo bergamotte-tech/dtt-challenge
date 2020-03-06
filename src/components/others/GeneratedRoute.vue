@@ -29,7 +29,15 @@ export default Vue.extend({
   cursor: pointer;
 }
 
-.generated-route * {
-  font-size: 200%;
+@media screen and (min-width: 0px) {
+  .generated-route * {
+    font-size: 70%;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .generated-route * {
+    font-size: 160%;
+  }
 }
 </style>

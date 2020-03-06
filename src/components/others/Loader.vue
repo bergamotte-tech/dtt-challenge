@@ -34,7 +34,7 @@ export default Vue.extend({
   width: 0.8em;
   height: 0.8em;
   border-radius: 50%;
-  background-color: #fc2f70;
+  background-color: var(--text-secondary);
 }
 
 .balls div:nth-of-type(1) {

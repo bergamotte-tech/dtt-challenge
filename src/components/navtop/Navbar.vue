@@ -177,6 +177,7 @@ img:hover {
     width: 100%;
     height: 5rem;
     background-color: var(--background-third);
+    justify-content: space-between;
   }
   .logo-language-wrapper .language-selection {
     margin: 0 0 0 auto;
@@ -189,6 +190,18 @@ img:hover {
     flex-direction: column;
   }
 
+  .routes-wrapper a {
+    font-size: 300%;
+  }
+
+  .route a {
+    color: var(--text-primary) !important;
+  }
+
+  .route .router-link-exact-active {
+    color: var(--text-secondary) !important;
+  }
+
   #menuHidden {
     display: none;
   }
@@ -197,7 +210,7 @@ img:hover {
 @media screen and (min-width: 300px) {
 }
 
-@media screen and (min-width: 650px) {
+@media screen and (min-width: 900px) {
   .hamburger {
     margin: 0;
     display: none;
@@ -208,7 +221,7 @@ img:hover {
     justify-content: flex-start;
     align-items: center;
     height: 5rem;
-    background-color: var(--background-primary);
+    background-color: var(--background-third);
   }
 
   .logo-language-wrapper {
@@ -222,6 +235,10 @@ img:hover {
   .routes-wrapper {
     margin: 0 0 0 auto;
     flex-direction: row;
+  }
+
+  .routes-wrapper a {
+    font-size: 200%;
   }
 
   #menuHidden {
