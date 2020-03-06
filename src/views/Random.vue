@@ -3,10 +3,12 @@
     <h1>{{ $t('views.random.title') }}:</h1>
 
     <div class="wrapper flex flex-column flex-center">
-      <button id="btn-randomize" @click="showRandomBeer()">RANDOMIZE !</button>
+      <button id="btn-randomize" @click="showRandomBeer()">
+        {{ $t('views.random.randomize') }}
+      </button>
       <div
         class="items-wrapper flex flex-center"
-        v-bind:class="{ nohover: !this.isDisplayed }"
+        v-bind:class="{ spinning: !this.isDisplayed }"
       >
         <loader v-if="!beer"> </loader>
         <item-box v-if="beer.id != 'default'" :beer="beer"></item-box>
@@ -77,10 +79,6 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-#category-details {
-  background-color: darkviolet;
-}
-
 #btn-randomize {
   margin: 2rem auto;
 }

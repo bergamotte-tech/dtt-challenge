@@ -4,18 +4,21 @@
       "navbar": {
         "title-home": "Home",
         "title-categories": "Categories",
-        "title-random": "Random",
-        "title-menu": "Menu",
-        "title-hide": "Hide"
+        "title-random": "Random"
       }
     },
     "navbottom": {
-      "email": {
-        "title": "Title email"
-      },
       "footer": {
         "title-credits": "Credits and acknowledgements",
-        "title-sitemap": "Entire sitemap"
+        "title-sitemap": "Entire sitemap",
+        "text": "The Big Brewery is a fictitious website developed for a test given by the company \"DTT\" (Amsterdam), all rights reserved. The images of the beer cans are from \"21stamendment.com\", whose employees kindly authorized using them for this project. The public API from where the data is fetched is https://data.opendatasoft.com/explore/dataset/open-beer-database%40public-us. Note that the fetched data DOES NOT CORRESPOND in any way to the images that only stand here as samples."
+      }
+    },
+    "other": {
+      "itembox": {
+        "text-city": "City",
+        "text-ibu": "IBU",
+        "text-product-id": "Product ID"
       }
     }
   },
@@ -31,16 +34,20 @@
   "views": {
     "errors": {
       "error-404": {
-        "title": "Error 404, we are sorry"
+        "title": "Error 404, we are sorry",
+        "text": "It seems that the page you have specified does not exist. Cheer up, we have other pages for you !"
       },
-
       "error-language": {
-        "title": "The specified language does not exist"
+        "title": "The specified language does not exist",
+        "text": "We might add it to our website someday, who knows ?"
       }
     },
 
     "age-verification": {
-      "title": "Are you of legal drinking age ?"
+      "title": "Are you of legal drinking age ?",
+      "text-part-1": "It's ok, cheer up and wait to get older ! You might as well visit ",
+      "text-part-2": "DTT's website ",
+      "text-part-3": "while you're here !"
     },
 
     "categories": {
@@ -58,11 +65,20 @@
     "home": {
       "title": "Home",
       "on-tap": "Beers on tap",
-      "thirsty": "Still thirsty ?"
+      "thirsty": "Still thirsty ?",
+      "text": "The Big Brewery gathers the best beers from all around the world. We put a lot of hard work looking for high-quality beverages, and we make them available to you on this website ! Wether you are a beer addict or simply curious, you will surely find your dream beer here !",
+      "cheers": "Cheers !",
+      "name-asc": "Name asc",
+      "name-desc": "Name desc",
+      "ibu-asc": "IBU asc",
+      "ibu-desc": "IBU desc",
+      "or-filter": "Or filter",
+      "grab-random": "Grab a random beer !"
     },
 
     "random": {
-      "title": "Random"
+      "title": "Random",
+      "randomize": "Randomize !"
     }
   },
 
@@ -70,7 +86,7 @@
     "image-beer": "Image of a beer can",
     "image-juice": "Image of a juice can",
     "image-barrel": "Image of a wooden beer barrel",
-    "logo": "Logo of the website, representig a beer can in black and white"
+    "logo": "Logo of the website, picturing a beer can in black and white"
   },
 
   "placeholder": {

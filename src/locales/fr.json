@@ -2,78 +2,99 @@
   "components": {
     "navtop": {
       "navbar": {
-        "title-home": "Home",
-        "title-categories": "Categories",
-        "title-random": "Random",
-        "title-menu": "Menu",
-        "title-hide": "Hide"
+        "title-home": "Accueil",
+        "title-categories": "Catégories",
+        "title-random": "Aléatoire"
       }
     },
     "navbottom": {
-      "email": {
-        "title": "Title email"
-      },
       "footer": {
-        "title": "Title footer"
+        "title-credits": "Crédits et remerciements",
+        "title-sitemap": "Sitemap complète",
+        "text": "The Big Brewery est un site web fictif développé dans le cadre d'un test pour l'entreprise \"DTT\" (Amsterdam), tous droits réservés. Les images de canettes de bière proviennent de \"21stamendment.com\", dont les employés ont aimablement autorisé l'utilisation pour ce projet. L'API publique fournissant les données est https://data.opendatasoft.com/explore/dataset/open-beer-database%40public-us. Notez que les données de l'API N'ONT AUCUN RAPPORT avec les images, servant simplement d'exemples."
+      }
+    },
+    "other": {
+      "itembox": {
+        "text-city": "Ville",
+        "text-ibu": "IBU",
+        "text-product-id": "ID produit"
       }
     }
   },
 
   "router": {
     "path-home": "",
-    "path-categories": "categories",
-    "path-random": "random",
-    "path-details": "details",
-    "path-age-verification": "age-verification"
+    "path-categories": "catégories",
+    "path-random": "aléatoire",
+    "path-details": "détails",
+    "path-age-verification": "vérification-age"
   },
 
   "views": {
     "errors": {
       "error-404": {
-        "title": "Error 404, we are sorry"
+        "title": "Erreur 404, désolé !",
+        "text": "Il semblerait que la page demandée n'existe pas. \"Cheer up\", nous avons d'autres pages pour vous !"
       },
-
       "error-language": {
-        "title": "The specified language does not exist"
+        "title": "Le language spécifié n'existe pas",
+        "text": "Peut-être sera-t-il ajouté au site un jour, qui sait ?"
       }
     },
 
     "age-verification": {
-      "title": "Are you of legal drinking age ?"
+      "title": "Êtes vous en âge de consommer de l'alcool ?",
+      "text-part-1": "Pas grave, \"cheer up\" et attendez de devenir grand ! Vous pourriez par ailleurs visiter ",
+      "text-part-2": "DTT's website ",
+      "text-part-3": "tant que vous êtes là !"
     },
 
     "categories": {
-      "title": "Categories"
+      "title": "Catégories"
     },
     "categories-details": {
-      "title": "Category"
+      "title": "Catégorie"
     },
 
-    "details": {
-      "title": "Details"
+    "beer-details": {
+      "title": "Détails",
+      "similar": "Du même pays:"
     },
 
     "home": {
-      "title": "Home",
-      "on-tap": "Beers on tap",
-      "thirsty": "Still thirsty ?"
+      "title": "Accueil",
+      "on-tap": "Bières du moment",
+      "thirsty": "Encoire soif ?",
+      "text": "The Big Brewery rassemble les meilleures bières du monde. Nous travaillons dur pour trouver des brevages de qualité, et nous vous les montrons sur ce site ! Que vous soyez un addict de bière ou simplement un curieux, vous trouverez sans aucun doute la bière de vos rêves ici !",
+      "cheers": "Cheers !",
+      "name-asc": "Nom asc",
+      "name-desc": "Nom desc",
+      "ibu-asc": "IBU asc",
+      "ibu-desc": "IBU desc",
+      "or-filter": "Ou filtrer",
+      "grab-random": "Prenez une bière aléatoire !"
     },
 
     "random": {
-      "title": "Random"
+      "title": "Aléatoire",
+      "randomize": "Lancer !"
     }
   },
 
   "alt": {
-    "image-beer": "Image of a beer can",
-    "image-juice": "Image of a juice can",
-    "image-barrel": "Image of a wooden beer barrel",
-    "logo": "Logo of the website, representig a beer can in black and white"
+    "image-beer": "Image d'une canette de bière",
+    "image-juice": "Image d'une canette de jus",
+    "logo": "Logo du site, représentant une canette de bière en noir et blanc"
+  },
+
+  "placeholder": {
+    "filter-name": "Filtrer par nom ici"
   },
 
   "buttons": {
-    "yes": "Yes",
-    "no": "No",
-    "submit": "Submit"
+    "yes": "Oui",
+    "no": "Non",
+    "submit": "Valider"
   }
 }

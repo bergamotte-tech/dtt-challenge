@@ -2,10 +2,7 @@
   <div id="error-404" class="padding-view flex flex-column flex-center">
     <h2>{{ $t('views.errors.error-404.title') }}</h2>
     <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam iusto,
-      molestias, esse nam hic dolorem sed ut voluptas delectus totam velit
-      pariatur veritatis saepe illum dicta ratione. Laudantium, quam
-      repellendus.
+      {{ $t('views.errors.error-404.text') }}
     </p>
   </div>
 </template>

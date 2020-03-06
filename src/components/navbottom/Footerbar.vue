@@ -2,10 +2,7 @@
   <div id="footerbar" class="padding-view">
     <h3>{{ $t('components.navbottom.footer.title-credits') }}:</h3>
     <p>
-      Credits here Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Dicta, eum? Inventore, quod recusandae velit porro dignissimos, quasi et
-      dolore aspernatur deleniti impedit, repellat voluptatem! Adipisci maiores
-      cumque cum labore laboriosam.
+      {{ $t('components.navbottom.footer.text') }}
     </p>
     <h3>{{ $t('components.navbottom.footer.title-sitemap') }}:</h3>
     <div class="routes-wrapper">

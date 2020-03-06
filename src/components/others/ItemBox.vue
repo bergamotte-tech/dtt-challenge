@@ -14,11 +14,15 @@
     <div class="description flex flex-center flex-column">
       <h2 v-if="!displayDetails">{{ beer.name }}</h2>
       <p>{{ beer.country }}</p>
-      <p v-if="displayDetails">City: {{ beer.city }}</p>
+      <p v-if="displayDetails">
+        {{ $t('components.other.itembox.text-city') }}: {{ beer.city }}
+      </p>
       <p>{{ beer.style_name }}</p>
-      <p>IBU: {{ beer.ibu }}</p>
+      <p>{{ $t('components.other.itembox.text-ibu') }}: {{ beer.ibu }}</p>
       <p v-if="displayDetails">{{ beer.website }}</p>
-      <p v-if="displayDetails">Product ID: {{ beer.id }}</p>
+      <p v-if="displayDetails">
+        {{ $t('components.other.itembox.text-product-id') }}: {{ beer.id }}
+      </p>
     </div>
 
     <div class="similar-display-name flex flex-center">
@@ -209,16 +213,16 @@ export default Vue.extend({
 }
 
 @media screen and (min-width: 0px) {
-  .nohover .color-line {
+  .spinning .color-line {
     height: 100%;
   }
 
-  .nohover img {
+  .spinning img {
     transform: none;
     transition: none;
   }
 
-  .nohover .description {
+  .spinning .description {
     max-width: 0;
     opacity: 0;
     transition: none;
@@ -226,20 +230,24 @@ export default Vue.extend({
 }
 
 @media screen and (min-width: 900px) {
-  .nohover:hover .color-line {
+  .spinning .color-line {
     height: 15%;
   }
 
-  .nohover:hover .color-line {
+  .spinning:hover .color-line {
+    height: 15%;
+  }
+
+  .spinning:hover .color-line {
     transition: none;
     border-radius: 0px;
   }
-  .nohover:hover .description {
+  .spinning:hover .description {
     max-width: 0;
     opacity: 0;
     transition: none;
   }
-  .nohover:hover img {
+  .spinning:hover img {
     transform: none;
     transition: none;
   }

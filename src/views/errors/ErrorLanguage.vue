@@ -2,7 +2,7 @@
   <div id="error-language" class="padding-view flex flex-column flex-center">
     <h2>{{ $t('views.errors.error-language.title') }}</h2>
     <h3>
-      Cheer up with one of our beers !
+      {{ $t('views.errors.error-language.text') }}
     </h3>
   </div>
 </template>

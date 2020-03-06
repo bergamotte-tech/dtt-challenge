@@ -20,13 +20,9 @@
       </div>
       <div class="introduction-speech">
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint facere
-          quis rem saepe alias molestias, fugiat deserunt nulla pariatur dolorem
-          vero laboriosam suscipit dicta omnis ratione dolorum. Veritatis,
-          necessitatibus deleniti! Lorem ipsum, dolor sit amet consectetur
-          adipisicing elit. Voluptatum quaerat aliquid tempora?
+          {{ $t('views.home.text') }}
         </p>
-        <h3>CHEERS !</h3>
+        <h3>{{ $t('views.home.cheers') }}</h3>
       </div>
     </div>
     <h2 id="onTapAnchor">{{ $t('views.home.on-tap') }}:</h2>
@@ -34,12 +30,16 @@
       <h3 class="option-label">Sort :</h3>
       <select id="sort">
         <option>- - - - - -</option>
-        <option @click="sortNameAsc()">Name asc</option>
-        <option @click="sortNameDesc()">Name desc</option>
-        <option @click="sortIBUAsc()">IBU asc</option>
-        <option @click="sortIBUDesc()">IBU desc</option>
+        <option @click="sortNameAsc()">{{ $t('views.home.name-asc') }}</option>
+        <option @click="sortNameDesc()">{{
+          $t('views.home.name-desc')
+        }}</option>
+        <option @click="sortIBUAsc()">{{ $t('views.home.ibu-asc') }}</option>
+        <option @click="sortIBUDesc()">{{ $t('views.home.ibu-desc') }}</option>
       </select>
-      <h3 class="option-label filter-label">OR filter :</h3>
+      <h3 class="option-label filter-label">
+        {{ $t('views.home.or-filter') }} :
+      </h3>
       <input
         id="filter"
         v-model="filterText"
@@ -60,7 +60,7 @@
 
     <h2 class="question flex flex-center">
       {{ $t('views.home.thirsty') }}
-      <a @click="goToCategories()"> Grab a random beer ! </a>
+      <a @click="goToRandom()">{{ $t('views.home.grab-random') }}</a>
     </h2>
   </div>
 </template>

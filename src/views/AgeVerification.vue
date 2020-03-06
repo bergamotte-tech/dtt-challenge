@@ -26,9 +26,12 @@
 
         <div v-if="isUnderage" class="choice">
           <p>
-            It's ok, cheer up and wait to get older ! You might as well visit
-            <a href="https://www.en.d-tt.nl/" target="_blank">DTT's website</a>
-            while you're here !
+            {{ $t('views.age-verification.text-part-1') }}
+
+            <a href="https://www.en.d-tt.nl/" target="_blank">{{
+              $t('views.age-verification.text-part-2')
+            }}</a
+            >{{ $t('views.age-verification.text-part-3') }}
           </p>
         </div>
       </div>
@@ -38,13 +41,9 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import LanguageSelection from '@/components/navtop/LanguageSelection.vue'
 
 export default Vue.extend({
   name: 'age-verification',
-  components: {
-    LanguageSelection
-  },
   data() {
     return {
       isUnderage: true
