@@ -20,6 +20,8 @@ const apiClient = axios.create({
 const apiKey =
   '&apikey=e8369ec8cbed1f636718daf081d728443c4cd5fbef07668cc816cec9'
 
+const randomSort = ['ibu', 'abv', 'srm', 'upc']
+
 // name: fields.name,
 // cat_name: fields.cat_name,
 // cat_id: fields.cat_id,
@@ -48,23 +50,27 @@ export default {
     return this.toSimplifiedSingleBeer(items.data)
   },
 
-  async getSimilarBeers(styleId: string, rows: number) {
+  async getSimilarBeers(beerId: string, countryName: string, rows: number) {
     const items = await apiClient.get<RawRecords>(
-      '/api/records/1.0/search/?dataset=open-beer-database%40public-us&sort=ibu&rows=' +
+      '/api/records/1.0/search/?dataset=open-beer-database%40public-us&sort=' +
+        randomSort[Math.floor(Math.random() * randomSort.length)] +
+        '&rows=' +
         rows +
-        '&q=style_id%3D' +
-        styleId +
+        '&q=id+not+' +
+        beerId +
+        '&refine.country=' +
+        countryName +
         apiKey
     )
     return this.toSimplifiedBeers(items.data)
   },
 
-  async getBeersByCategory(cat: string, rows: number) {
+  async getBeersByCategory(catName: string, rows: number) {
     const items = await apiClient.get<RawRecords>(
       '/api/records/1.0/search/?dataset=open-beer-database%40public-us&sort=ibu&rows=' +
         rows +
         '&refine.cat_name=' +
-        cat +
+        catName +
         '&dataChart=apiKey'
     )
     return this.toSimplifiedBeers(items.data)
@@ -73,6 +79,14 @@ export default {
   async getCategories() {
     const items = await apiClient.get<CategoryRecords>(
       '/api/records/1.0/search/?dataset=open-beer-database%40public-us&rows=0&facet=cat_name' +
+        '&dataChart=apiKey'
+    )
+    return this.toSimplifiedCategories(items.data)
+  },
+
+  async getIds() {
+    const items = await apiClient.get<CategoryRecords>(
+      '/api/records/1.0/search/?dataset=open-beer-database%40public-us&rows=0&facet=id' +
         '&dataChart=apiKey'
     )
     return this.toSimplifiedCategories(items.data)

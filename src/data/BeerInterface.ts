@@ -70,13 +70,13 @@ export class SimplifiedBeerClass {
   public website?: string | null
 
   constructor() {
-    this.name = 'name'
-    this.city = 'city'
-    this.cat_id = 'cat_id'
-    this.country = 'country'
-    this.id = 'id'
+    this.name = 'default'
+    this.city = 'default'
+    this.cat_id = 'default'
+    this.country = 'default'
+    this.id = 'default'
     this.ibu = 0
-    this.brewery_id = '1'
+    this.brewery_id = 'default'
   }
 }
 //CATEGORIES

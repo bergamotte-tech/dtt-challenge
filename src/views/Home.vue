@@ -13,7 +13,9 @@
           <div class="bubble bubble3"></div>
           <div class="bubble bubble4"></div>
           <div class="bubble bubble5"></div>
-          <div class="text-scroll flex flex-center"><p>scroll -></p></div>
+          <div class="text-scroll flex flex-center" @click="goToAnchor()">
+            <p>scroll -></p>
+          </div>
         </div>
       </div>
       <div class="introduction-speech">
@@ -27,22 +29,28 @@
         <h3>CHEERS !</h3>
       </div>
     </div>
-    <h2>{{ $t('views.home.on-tap') }}:</h2>
+    <h2 id="onTapAnchor">{{ $t('views.home.on-tap') }}:</h2>
 
     <div class="items-wrapper flex flex-center">
       <loader v-if="topBeers.length < 1"> </loader>
-      <item-box v-for="beer in topBeers" :key="beer.id" :beer="beer"></item-box>
+      <item-box
+        v-for="beer in topBeers"
+        :key="beer.id"
+        :beer="beer"
+        class="home-display"
+      ></item-box>
     </div>
 
-    <h2>{{ $t('views.home.thirsty') }}:</h2>
-    <button-categories></button-categories>
+    <h2 class="question">
+      {{ $t('views.home.thirsty') }}
+      <a @click="goToCategories()"> Grab a random beer ! </a>
+    </h2>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import ItemBox from '@/components/others/ItemBox.vue'
-import ButtonCategories from '@/components/others/ButtonCategories.vue'
 import { SimplifiedBeerClass } from '@/data/BeerInterface'
 import BeerService from '@/data/BeerService'
 import Loader from '@/components/others/Loader.vue'
@@ -51,12 +59,23 @@ export default Vue.extend({
   name: 'home',
   components: {
     Loader,
-    ButtonCategories,
     ItemBox
   },
   data() {
     return {
       topBeers: Array<SimplifiedBeerClass>()
+    }
+  },
+  methods: {
+    goToAnchor(): void {
+      document.getElementById('onTapAnchor')?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest'
+      })
+    },
+    goToRandom(): void {
+      this.$router.push({ name: this.$i18n.locale + '-random' })
     }
   },
   created(): void {
@@ -67,10 +86,21 @@ export default Vue.extend({
 
 <style scoped>
 /* GENERAL */
-
 #home {
   background-color: blueviolet;
   min-height: 100%;
+}
+
+.question {
+  white-space: nowrap;
+}
+
+.question a {
+  text-decoration: underline var(--text-secondary);
+}
+
+.question a {
+  cursor: pointer;
 }
 
 .text-scroll {
@@ -100,6 +130,10 @@ export default Vue.extend({
   100% {
     top: 55%;
   }
+}
+
+.text-scroll:hover {
+  cursor: pointer;
 }
 
 .introduction-wrapper {

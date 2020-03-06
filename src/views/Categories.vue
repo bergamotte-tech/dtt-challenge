@@ -1,7 +1,6 @@
 <template>
   <div id="categories" class="padding-view">
     <h1>{{ $t('views.categories.title') }}/</h1>
-
     <div class="items-wrapper flex flex-center">
       <loader v-if="categories.length < 1"> </loader>
       <category-box
@@ -44,13 +43,16 @@ export default Vue.extend({
 
 #categories {
   background-color: blueviolet;
-  min-height: 100%;
+  height: auto;
+}
+
+#categories * {
+  position: relative;
 }
 
 .items-wrapper {
-  width: 100%;
   display: grid;
-  grid-gap: 0px;
+  grid-gap: 2rem;
 }
 
 /* RESPONSIVE */

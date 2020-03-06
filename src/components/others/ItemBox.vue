@@ -1,5 +1,6 @@
 <template>
   <div class="item-box flex flex-center">
+    <div class="color-line"></div>
     <button v-if="!displayDetails" class="clicker" @click="openCan()">
       <img v-bind:src="this.getNextImage()" v-bind:alt="$t('alt.image-beer')" />
     </button>
@@ -11,14 +12,17 @@
     />
 
     <div class="description flex flex-center flex-column">
-      <h2>{{ beer.name }}</h2>
-      <p>{{ beer.cat_name }}</p>
+      <h2 v-if="!displayDetails">{{ beer.name }}</h2>
       <p>{{ beer.country }}</p>
+      <p v-if="displayDetails">City: {{ beer.city }}</p>
       <p>{{ beer.style_name }}</p>
       <p>IBU: {{ beer.ibu }}</p>
-      <p v-if="displayDetails">City: {{ beer.city }}</p>
       <p v-if="displayDetails">{{ beer.website }}</p>
-      <p v-if="displayDetails">ID: {{ beer.id }}</p>
+      <p v-if="displayDetails">Product ID: {{ beer.id }}</p>
+    </div>
+
+    <div class="similar-display-name flex flex-center">
+      <p>{{ beer.name }}</p>
     </div>
   </div>
 </template>
@@ -69,11 +73,11 @@ export default Vue.extend({
 
 <style scoped>
 .item-box {
-  background-color: pink;
+  background-color: transparent;
 }
 
-.item-box:nth-child(odd) {
-  background-color: sandybrown;
+.item-box * {
+  z-index: 2;
 }
 
 .item-box .clicker {
@@ -82,19 +86,64 @@ export default Vue.extend({
 
 .item-box img {
   width: auto;
+  height: 100%;
   display: block;
 }
 
-/* RESPONSIVE */
+.description {
+  margin: 0 2rem;
+  height: 95%;
+}
 
+.details img {
+  transform: rotate(-10deg);
+}
+
+.similar-display {
+  flex-direction: column;
+}
+
+.similar-display .description {
+  display: none;
+}
+
+.similar-display-name {
+  display: none;
+}
+
+.similar-display .similar-display-name {
+  display: block;
+}
+
+.color-line {
+  position: absolute;
+  margin: auto;
+  z-index: 1;
+  background-color: pink;
+
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.similar-display {
+  width: 100%;
+  background-color: transparent !important;
+}
+
+/* RESPONSIVE */
 @media screen and (min-width: 0px) {
+  .color-line {
+    height: 100%;
+  }
+
+  .similar-display .color-line {
+    height: 15%;
+  }
+
   .item-box .description {
-    width: 100%;
     opacity: 1;
-    margin: 0 2rem;
   }
   .item-box img {
-    height: 50vw;
     transform: rotate(-10deg);
   }
 }
@@ -108,27 +157,34 @@ export default Vue.extend({
 @media screen and (min-width: 900px) {
   /* END OF "MOBILE LIKE" DISPLAY FOR ITEMS */
 
-  .item-box {
-    height: 600px;
-  }
-
   .item-box .description {
     overflow: hidden;
-    width: 0;
     opacity: 0;
-    transition: width linear 0.3s 0.2s, opacity linear 0.2s;
+    width: auto;
+    max-width: 0;
+    transition: max-width linear 0.3s 0.2s, opacity linear 0.2s;
   }
 
   .item-box img {
-    height: 80%;
     transform: none;
     transition: linear 0.2s;
   }
 
+  .color-line {
+    height: 15%;
+    transition: ease-in 0.3s;
+  }
+
+  .item-box:hover .color-line {
+    height: 100%;
+    transition: ease-out 0.4s;
+    border-radius: 10px;
+  }
+
   .item-box:hover .description {
-    width: 100%;
+    max-width: 100%;
     opacity: 1;
-    transition: width linear 0.4s, opacity ease-out 0.2s 0.4s;
+    transition: max-width linear 0.4s, opacity ease-out 0.2s 0.4s;
   }
   .item-box:hover img {
     transform: rotate(-10deg);
@@ -136,16 +192,40 @@ export default Vue.extend({
   }
 }
 
-.similar .description {
-  display: none;
+@media screen and (min-width: 0px) {
+  .nohover .color-line {
+    height: 100%;
+  }
+
+  .nohover img {
+    transform: none;
+    transition: none;
+  }
+
+  .nohover .description {
+    max-width: 0;
+    opacity: 0;
+    transition: none;
+  }
 }
 
-.details .description {
-  width: 100%;
-  opacity: 1;
-  margin: 0 2rem;
-}
-.details img {
-  transform: rotate(-10deg);
+@media screen and (min-width: 900px) {
+  .nohover:hover .color-line {
+    height: 15%;
+  }
+
+  .nohover:hover .color-line {
+    transition: none;
+    border-radius: 0px;
+  }
+  .nohover:hover .description {
+    max-width: 0;
+    opacity: 0;
+    transition: none;
+  }
+  .nohover:hover img {
+    transform: none;
+    transition: none;
+  }
 }
 </style>

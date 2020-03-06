@@ -1,33 +1,82 @@
 <template>
   <div id="random" class="padding-view">
-    <h1>{{ $t('views.random.title') }}/</h1>
-    <div class="introduction-wrapper flex flex-row"></div>
-    <h2>Whatever:</h2>
-    <div class="items-wrapper flex flex-row"></div>
-    <h2>Whatever:</h2>
+    <h1>{{ $t('views.random.title') }}:</h1>
+
+    <button @click="showRandomBeer()">RANDOMIZE !</button>
+
+    <div
+      class="items-wrapper flex flex-center"
+      v-bind:class="{ nohover: !this.isDisplayed }"
+    >
+      <loader v-if="!beer"> </loader>
+      <item-box v-if="beer.id != 'default'" :beer="beer"></item-box>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-export default {
-  name: 'random'
-}
+import Vue from 'vue'
+import BeerService from '@/data/BeerService'
+import ItemBox from '@/components/others/ItemBox.vue'
+import { SimplifiedBeerClass } from '@/data/BeerInterface'
+import Loader from '@/components/others/Loader.vue'
+
+export default Vue.extend({
+  name: 'random',
+  components: {
+    Loader,
+    ItemBox
+  },
+  data() {
+    return {
+      beer: new SimplifiedBeerClass(),
+      trueId: '0',
+      isDisplayed: false
+    }
+  },
+  methods: {
+    spinTheWheel(): void {
+      this.isDisplayed = false
+      this.beer.id = '0'
+      let index = 1
+      const iterations = 20
+      const duration = 70
+      while (index <= iterations) {
+        //less than 2/3 of iterations
+        if (index < iterations - iterations / 3)
+          setTimeout(this.setFakeId, duration * index * 2)
+        else setTimeout(this.setFakeId, duration * index * 2 + 400)
+        index++
+      }
+      setTimeout(this.setGenuineId, duration * index * 2 + 400)
+    },
+
+    setFakeId(): void {
+      this.beer.id = this.randomId()
+    },
+
+    setGenuineId(): void {
+      this.beer.id = this.trueId
+      this.isDisplayed = true
+    },
+
+    randomId(): string {
+      //max value hard coded for simplifying reasons, getting the total count of ids in the API would be safer
+      return Math.floor(Math.random() * 500).toString()
+    },
+
+    showRandomBeer(): void {
+      BeerService.getSingleBeer(this.randomId()).then(
+        beer => ((this.beer = beer), (this.trueId = beer.id))
+      ),
+        this.spinTheWheel()
+    }
+  }
+})
 </script>
 
 <style scoped>
-#random {
-  background-color: blueviolet;
-  min-height: 100%;
-}
-
-.introduction-wrapper {
-  background-color: cornflowerblue;
-  width: 100%;
-  height: 400px;
-}
-.items-wrapper {
-  background-color: darkcyan;
-  width: 100%;
-  height: 400px;
+#category-details {
+  background-color: darkviolet;
 }
 </style>

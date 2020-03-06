@@ -1,6 +1,14 @@
 <template>
   <div id="footerbar">
-    <div class="routes-wrapper flex flex-center">
+    <h3>{{ $t('components.navbottom.footer.title-credits') }}:</h3>
+    <p>
+      Credits here Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Dicta, eum? Inventore, quod recusandae velit porro dignissimos, quasi et
+      dolore aspernatur deleniti impedit, repellat voluptatem! Adipisci maiores
+      cumque cum labore laboriosam.
+    </p>
+    <h3>{{ $t('components.navbottom.footer.title-sitemap') }}:</h3>
+    <div class="routes-wrapper">
       <generated-route
         v-for="route in generatedSitemap"
         :key="route"
@@ -30,11 +38,16 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+#footerbar p {
+  margin-bottom: 2rem;
+}
+
 .routes-wrapper {
-  margin: 0 auto;
-  height: 100%;
+  height: auto;
   width: auto;
-  flex-direction: column;
-  justify-content: space-between;
+  max-width: 100%;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 30% 30% 30%;
 }
 </style>

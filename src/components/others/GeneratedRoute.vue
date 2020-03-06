@@ -28,4 +28,8 @@ export default Vue.extend({
 .generated-route:hover {
   cursor: pointer;
 }
+
+.generated-route * {
+  font-size: 200%;
+}
 </style>

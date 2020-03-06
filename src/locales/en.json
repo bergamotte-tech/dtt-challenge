@@ -14,7 +14,8 @@
         "title": "Title email"
       },
       "footer": {
-        "title": "Title footer"
+        "title-credits": "Credits and acknowledgements",
+        "title-sitemap": "Entire sitemap"
       }
     }
   },
@@ -51,7 +52,7 @@
 
     "beer-details": {
       "title": "Details",
-      "similar": "By the same brewery :"
+      "similar": "From the same country:"
     },
 
     "home": {

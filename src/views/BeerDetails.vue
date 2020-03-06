@@ -11,13 +11,13 @@
       class="details"
     ></item-box>
     <h2>{{ $t('views.beer-details.similar') }}</h2>
-    <div class="similar flex flex-row flex-center">
+    <div class="flex flex-row flex-center">
       <loader v-if="similarBeers.length < 1"> </loader>
       <item-box
         v-for="beer in similarBeers"
         :key="beer.id"
         :beer="beer"
-        class="similar"
+        class="similar-display"
       ></item-box>
     </div>
   </div>
@@ -48,23 +48,20 @@ export default Vue.extend({
     }
   },
   methods: {
-    toNormalName(normalizedName: string): string {
-      return normalizedName.replace(/\+/g, ' ')
+    toNormalizedName(basicName: string): string {
+      return basicName.replace(/\s/g, '+')
     },
     init(): void {
       BeerService.getSingleBeer(this.idbeer).then(
         beer => (
-          ((this.selectedBeer = beer), console.log(beer.brewery_id)),
-          BeerService.getSimilarBeers('1', 3).then(
-            beers => (this.similarBeers = beers)
-          )
+          (this.selectedBeer = beer),
+          BeerService.getSimilarBeers(
+            beer.id,
+            this.toNormalizedName(beer.country),
+            3
+          ).then(beers => (this.similarBeers = beers))
         )
       )
-
-      // TODO pass style id or similar : pbl undefined car async ? undefined dans le reste aussi, ptetre possiblement null ?
-      // BeerService.getSimilarBeers('2', 3).then(
-      //   beers => (this.similarBeers = beers)
-      // )
     }
   },
   created(): void {
@@ -72,7 +69,6 @@ export default Vue.extend({
   },
   watch: {
     $route() {
-      console.log('ha')
       this.init()
     }
   }
@@ -83,5 +79,9 @@ export default Vue.extend({
 #beer-details {
   background-color: black;
   min-height: 100%;
+}
+
+.item-box {
+  height: 33vw;
 }
 </style>

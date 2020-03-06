@@ -13,7 +13,7 @@
 import Vue from 'vue'
 import Navbar from '@/components/navtop/Navbar.vue'
 import Footerbar from '@/components/navbottom/Footerbar.vue'
-import AgeVerification from '@/components/others/AgeVerification.vue'
+import AgeVerification from '@/views/AgeVerification.vue'
 
 export default Vue.extend({
   name: 'app',
@@ -81,6 +81,7 @@ export default Vue.extend({
 * {
   margin: 0;
   padding: 0;
+  position: relative;
 }
 
 html {
@@ -169,23 +170,23 @@ h6,
 /* RESPONSIVE */
 @media screen and (min-width: 0px) {
   h1 {
-    font-size: 9.3vw;
+    font-size: 8.5vh;
   }
   h2 {
-    font-size: 7.2vw;
+    font-size: 4vh;
   }
   h3 {
-    font-size: 8vw;
+    font-size: 3vh;
   }
   p {
-    font-size: 2.7vw;
+    font-size: 2vh;
   }
   a {
-    font-size: 4vw;
+    font-size: 3vh;
   }
 }
-/* 
-@media screen and (min-width: 300px) {
+
+/* @media screen and (min-width: 300px) {
   h1 {
     font-size: 50px;
   }
@@ -201,31 +202,27 @@ h6,
   a {
     font-size: 34px;
   }
-}
+} */
 
 @media screen and (min-width: 650px) {
   h1 {
-    font-size: 62px;
+    font-size: 8.5vw;
   }
   h2 {
-    font-size: 30px;
+    font-size: 4vw;
   }
   h3 {
-    font-size: 25px;
+    font-size: 3vw;
   }
   p {
-    font-size: 19px;
+    font-size: 2vw;
   }
   a {
-    font-size: 37px;
-  }
-
-  .padding-view {
-    padding: 5rem;
+    font-size: 4vw;
   }
 }
 
-@media screen and (min-width: 900px) {
+/* @media screen and (min-width: 900px) {
   h1 {
     font-size: 90px;
   }
@@ -242,15 +239,16 @@ h6,
     font-size: 40px;
   }
 } */
+
 @media screen and (min-width: 0px) {
   .padding-view {
-    padding: 1rem 1rem 2rem 1rem;
+    padding: 0.7rem;
   }
 }
 
 @media screen and (min-width: 650px) {
   .padding-view {
-    padding: 5rem;
+    padding: 5rem 4rem;
   }
 }
 
@@ -287,6 +285,10 @@ textarea {
   font-size: 100%;
   line-height: 1.15;
   margin: 0;
+}
+button {
+  border-radius: 5px;
+  padding: 0.5rem;
 }
 button,
 input {
@@ -376,7 +378,6 @@ textarea {
   display: grid;
   grid-gap: 0px;
   background-color: inherit;
-  color: #444;
 }
 
 @media screen and (min-width: 0px) {
@@ -386,9 +387,6 @@ textarea {
 }
 
 @media screen and (min-width: 1400px) {
-  .items-wrapper {
-    grid-template-columns: 50% 50%;
-  }
 }
 
 .clicker,
@@ -396,7 +394,7 @@ textarea {
 .clicker:active {
   overflow: hidden;
   transform: initial;
-  width: 100%;
+  width: auto;
   height: 100%;
   background: none;
   border: none;
@@ -411,5 +409,17 @@ textarea {
 .clicker:active {
   transform: scale(1.05);
   transition: ease-in-out 0.1s;
+}
+
+@media screen and (min-width: 0px) {
+  .item-box {
+    height: 40vw;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .item-box {
+    height: 55vh;
+  }
 }
 </style>

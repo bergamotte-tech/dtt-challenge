@@ -1,15 +1,10 @@
 <template>
-  <div
-    class="category-box flex flex-center"
-    @click="goToCategory(category.cat_name)"
-  >
-    <img
-      src="https://kwc.ge/wp-content/uploads/2017/09/7c4486a1ffc963faa4416cb846ade68c.png"
-      v-bind:alt="$t('alt.image-barrel')"
-    />
-    <div class="description flex flex-center flex-column">
-      <h2>{{ category.cat_name }}</h2>
-    </div>
+  <div class="category-box flex flex-center">
+    <button class="clicker" @click="goToCategory()">
+      <div class="description flex flex-center flex-column">
+        <h3>{{ category.cat_name }}</h3>
+      </div>
+    </button>
   </div>
 </template>
 
@@ -24,9 +19,13 @@ export default Vue.extend({
     }
   },
   methods: {
-    goToCategory(rawName: string) {
-      const transformedName = rawName.replace(/\s/g, '+')
-      this.$router.push({ path: this.$route.path + '/' + transformedName })
+    goToCategory() {
+      const transformedName = this.category.cat_name.replace(/\s/g, '+')
+
+      this.$router.push({
+        name: this.$i18n.locale + '-category-details',
+        params: { catName: transformedName }
+      })
     }
   }
 })
@@ -34,8 +33,9 @@ export default Vue.extend({
 
 <style scoped>
 .category-box {
-  padding: 2rem;
-  height: auto;
+  height: 100%;
+  padding: 0.5rem 0;
+  border-radius: 0.3rem;
   background-color: pink;
 }
 .category-box:nth-child(odd) {
@@ -46,27 +46,9 @@ export default Vue.extend({
   cursor: pointer;
 }
 
-.category-box img {
-  width: auto;
-  display: block;
-  margin: 0 auto 0 0;
-}
-
-.category-box .description {
-  position: relative;
-  margin: 0 auto;
-}
-
 /* RESPONSIVE */
 
 @media screen and (min-width: 0px) {
-  .category-box img {
-    display: none;
-  }
-
-  .category-box .description {
-    height: auto;
-  }
 }
 
 @media screen and (min-width: 300px) {
@@ -76,19 +58,8 @@ export default Vue.extend({
 }
 
 @media screen and (min-width: 900px) {
-  .category-box .description {
-    height: auto;
-  }
-
-  .category-box img {
-    display: flex;
-    height: 40vh;
-  }
 }
 
 @media screen and (min-width: 1300px) {
-  .category-box img {
-    height: 50vh;
-  }
 }
 </style>
