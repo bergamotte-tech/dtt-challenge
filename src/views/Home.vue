@@ -27,7 +27,7 @@
     </div>
     <h2 id="onTapAnchor">{{ $t('views.home.on-tap') }}:</h2>
     <div class="filters flex flex-center flex-row">
-      <h3 class="option-label">Sort :</h3>
+      <h3 class="option-label">{{ $t('views.home.sort') }} :</h3>
       <select id="sort">
         <option>- - - - - -</option>
         <option @click="sortNameAsc()">{{ $t('views.home.name-asc') }}</option>

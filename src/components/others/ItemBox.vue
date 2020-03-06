@@ -12,7 +12,7 @@
     />
 
     <div class="description flex flex-center flex-column">
-      <h2 v-if="!displayDetails">{{ beer.name }}</h2>
+      <h3 v-if="!displayDetails">{{ beer.name }}</h3>
       <p>{{ beer.country }}</p>
       <p v-if="displayDetails">
         {{ $t('components.other.itembox.text-city') }}: {{ beer.city }}
@@ -165,6 +165,10 @@ export default Vue.extend({
 
   .item-box img:hover {
     cursor: pointer;
+  }
+
+  .description h3 {
+    font-size: 2vh;
   }
 }
 

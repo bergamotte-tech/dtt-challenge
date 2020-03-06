@@ -163,10 +163,6 @@ h6,
   color: var(--text-secondary);
 }
 
-h3 {
-  margin: 1rem 0;
-}
-
 /* RESPONSIVE */
 @media screen and (min-width: 0px) {
   h1 {

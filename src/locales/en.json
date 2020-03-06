@@ -72,6 +72,7 @@
       "name-desc": "Name desc",
       "ibu-asc": "IBU asc",
       "ibu-desc": "IBU desc",
+      "sort": "Sort",
       "or-filter": "Or filter",
       "grab-random": "Grab a random beer !"
     },
