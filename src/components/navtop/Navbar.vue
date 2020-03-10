@@ -149,6 +149,9 @@ img:hover {
 }
 
 /* RESPONSIVE */
+.hamburger {
+  display: none;
+}
 @media screen and (min-width: 0px) {
   .hamburger {
     background-color: var(--background-secondary);
